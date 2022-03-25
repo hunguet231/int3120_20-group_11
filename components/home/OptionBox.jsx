@@ -1,4 +1,5 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import * as React from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 
 const OptionBox = ({imageUrl, textButton}) => {

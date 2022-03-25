@@ -3,7 +3,7 @@ import {
   DrawerItemList
 } from '@react-navigation/drawer';
 import * as React from 'react';
-import { StyleSheet, Image } from 'react-native';
+import { Image } from 'react-native';
 
 const Menu = (props) => {
   return (
@@ -15,12 +15,5 @@ const Menu = (props) => {
     </DrawerContentScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  scroll: {
-    paddingTop: 0,
-    paddingRight: 0,
-  }
-});
 
 export default Menu

@@ -8,7 +8,7 @@ import 'react-native-gesture-handler';
 import Feedback from './components/common/Feedback';
 import Menu from './components/common/Menu';
 import Rate from './components/common/Rate';
-import Setting from './components/common/Setting';
+import Setting from './components/common/Setting/Setting';
 import Share from './components/common/Share';
 import Dashboad from './components/home/Dashboad';
 import { AppConstant } from './constants';
@@ -47,10 +47,10 @@ export default function App() {
          }}
         />
         <Drawer.Screen 
-          name="Cài đặt" 
+          name="Chọn hạng bài thi" 
           component={Setting} 
           options={{
-            title: 'Cài đặt',
+            title: 'Chọn hạng bài thi',
             drawerIcon: ({focused, size}) => (
               <Ionicons name={`ios-settings`} size={size} color={focused ? '#7092FE' : '#000'} />
             ),

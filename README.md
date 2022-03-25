@@ -12,6 +12,7 @@
 - React Native
 
 ## Cách chạy:
+Đầu tiên máy bạn phải cài đặt NodeJS bản LTS
 
 1. Install dependencies
 

@@ -10,7 +10,6 @@
 
 ## Công nghệ sử dụng:
 - React Native
-- Ant Design
 
 ## Cách chạy:
 

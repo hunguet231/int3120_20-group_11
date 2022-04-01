@@ -1,19 +1,19 @@
 import { View, Text, StyleSheet } from "react-native";
-import * as React from 'react';
+import * as React from "react";
 
-const Rate = () => {
+const Share = () => {
   return (
-    <View style={styles.rate}>
-      <Text>Rate</Text>
+    <View style={styles.share}>
+      <Text>Share</Text>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-  rate: {
+  share: {
     marginLeft: 15,
     marginTop: 20,
-  }
+  },
 });
 
-export default Rate
+export default Share;

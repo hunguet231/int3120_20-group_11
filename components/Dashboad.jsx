@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet, View } from "react-native";
-import { options } from "../../utils/options";
 import OptionBox from "./OptionBox";
-import * as React from 'react';
+import * as React from "react";
+import { options } from "../constants";
 
 const Dashboad = () => {
   return (
@@ -9,11 +9,11 @@ const Dashboad = () => {
       <View style={styles.main}>
         {options.map((opt, index) => (
           <OptionBox key={index} imageUrl={opt.image} textButton={opt.text} />
-          ))}
+        ))}
       </View>
     </ScrollView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   main: {
@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 20,
-    backgroundColor: '#fff',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  }
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
 });
 
-export default Dashboad
+export default Dashboad;

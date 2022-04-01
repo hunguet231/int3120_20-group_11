@@ -1,3 +1,3 @@
-import * as AppConstant from "./app.constant";
+export * from "./options";
 
-export { AppConstant };
+export const DEFAULT_APP_COLOR = "#7092FE";

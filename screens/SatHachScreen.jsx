@@ -1,7 +1,8 @@
-import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { DEFAULT_APP_COLOR } from "../constants";
+import React from "react";
+import SatHach from "../components/SatHach";
 import Test from "../components/Test";
+import { DEFAULT_APP_COLOR } from "../constants";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,7 @@ const SatHachScreen = () => {
     >
       <Stack.Screen
         name="SatHachScreen"
-        component={Test}
+        component={SatHach}
         options={{
           headerShown: false,
         }}

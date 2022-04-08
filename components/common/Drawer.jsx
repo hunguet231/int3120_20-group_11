@@ -6,6 +6,8 @@ import Setting from './Setting/Setting';
 import Share from './Share';
 import { AppConstant } from '../../constants';
 import Dashboad from '../home/Dashboad';
+import SatHach from '../SatHach';
+import CauHoi from '../CauHoi';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Menu from "./Menu";
 
@@ -28,7 +30,7 @@ const Drawer = () => {
       >
         <Drawer.Screen 
           name="Trang chủ" 
-          component={Dashboad} 
+          component={CauHoi} 
           options={{
             title: 'Trang chủ',
             drawerIcon: ({focused, size}) => (

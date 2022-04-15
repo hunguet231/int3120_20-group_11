@@ -1,5 +1,4 @@
 import { View, Text, Button, Image, ScrollView, StyleSheet, Animated, Alert,TouchableOpacity,TouchableRipple, TouchableHighlight} from "react-native";
-import { options } from "../utils/sathachOptions";
 import * as React from 'react';
 import Checkbox from "./Checkbox";
 //import { Checkbox } from 'antd';
@@ -178,24 +177,35 @@ const styles = {
         backgroundColor: '#1890FF',
         position: 'absolute',
         alignItems: 'center',
-        paddingTop: 25,
+        
         borderTopLeftRadius: 8,
         borderTopRightRadius: 8,
+    },
+    footerBtn: {
+        height: '100%',
+        width: '100%', 
     },
     footerImage: {
         height: 10,
         width: 15,
+        alignItems: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: 5,
+        marginBottom: 15,
     },
     footerText: {
         fontFamily: 'Roboto',
         fontStyle: 'normal',
-        
         fontSize: 14,
         lineHeight: 15,
         color: '#FFF',
-        display: 'flex',
         alignItems: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: 'auto',
+        marginBottom: 'auto',
     }
 }
 

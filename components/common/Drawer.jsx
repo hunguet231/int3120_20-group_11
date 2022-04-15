@@ -8,10 +8,11 @@ import { AppConstant } from '../../constants';
 import Dashboad from '../home/Dashboad';
 import SatHach from '../SatHach';
 import CauHoi from '../CauHoi';
+import ChonCauHoi from '../ChonCauHoi';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Menu from "./Menu";
 
-const Drawer = () => {
+const Drawer = ({navigation}) => {
   const Drawer = createDrawerNavigator();
 
   return (
@@ -30,7 +31,7 @@ const Drawer = () => {
       >
         <Drawer.Screen 
           name="Trang chủ" 
-          component={CauHoi} 
+          component={Dashboad} 
           options={{
             title: 'Trang chủ',
             drawerIcon: ({focused, size}) => (
@@ -78,6 +79,9 @@ const Drawer = () => {
             ),
          }}  
         />
+
+
+      
       </Drawer.Navigator>
   )
 }

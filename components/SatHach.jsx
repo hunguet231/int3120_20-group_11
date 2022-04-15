@@ -6,7 +6,7 @@ const content = 'Hãy làm nhiều đề sát hạch bên dưới để đánh g
 
 
 
-const SatHach = () => {
+const SatHach = ({navigation}) => {
     return (
         <View style={{backgroundColor: 'white'}} >
             <View style={styles.header}>
@@ -14,23 +14,12 @@ const SatHach = () => {
             </View>
             <ScrollView style={{height: 580}}>
                 <View style={styles.main}>
-                    {/* <TouchableOpacity style={{marginBottom: 10}}>
-                        <View style={styles.button}>
-                            <View style = {styles.container1}>
-						        <View style = {styles.containerBox1}>
-						            <Text style = {styles.containerBox1Content}>Đề số 1</Text>
-                                </View>
-					        </View>
-                            <Text style = {styles.process}>10/25</Text>
-                            <View style = {styles.processBar}>
-						        <View style = {styles.goal}></View>
-						        <View style = {styles.current}></View>
-					        </View>
-                        </View>
-                    </TouchableOpacity> */}
-
+                    
                     {options.map((opt, index) => (
-                        <TouchableHighlight key={index} style={styles.button1}>
+                        <TouchableOpacity key={index} style={styles.button1} 
+                        onPress={()=>{
+                            navigation.navigate('CauHoi');
+                        }}>
                            
                             <View style={styles.button}>
                                 <View style = {styles.container1}>
@@ -44,7 +33,7 @@ const SatHach = () => {
                                 <View style = {[styles.current, {width: opt.done*styles.goal.width/opt.total}]}></View>
 					        </View>
                             </View>
-                        </TouchableHighlight>
+                        </TouchableOpacity>
                     ))}
                     
 
@@ -91,7 +80,7 @@ const SatHach = () => {
         borderColor: "rgba(0, 0, 0, 0.15)",
         borderStyle: "solid",
         borderWidth: 1,
-        padding: 15,
+        //padding: 15,
         width: 360,
         height: 50,
         borderRadius: 8,
@@ -107,6 +96,10 @@ const SatHach = () => {
     },
     
     button1: {
+        width: 360,
+        height: 50,
+        shadowRadius: 24,
+        borderRadius: 8,
         marginBottom: 10, 
         marginTop: 10,
     },

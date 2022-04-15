@@ -4,16 +4,20 @@ import * as React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { AppConstant } from './constants';
 import Drawer from './components/common/Drawer';
+import AppNavigator from './components/AppNavigator';
 
-export default function App() {
+export default class App extends React.Component {
 
-  return (
-    <NavigationContainer>
-      <SafeAreaView style={styles.statusBar}>
-      </SafeAreaView>
-      <Drawer/>
-    </NavigationContainer>
-  );
+  render() {
+    return (
+      <NavigationContainer>
+         <SafeAreaView style={styles.statusBar}>
+          </SafeAreaView>
+          <AppNavigator />
+      </NavigationContainer>
+      
+    );
+  }
 }
 
 const styles = StyleSheet.create({

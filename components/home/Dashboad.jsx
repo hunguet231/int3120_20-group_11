@@ -3,12 +3,12 @@ import { options } from "../../utils/options";
 import OptionBox from "./OptionBox";
 import * as React from 'react';
 
-const Dashboad = () => {
+const Dashboad = ({navigation}) => {
   return (
     <ScrollView>
       <View style={styles.main}>
         {options.map((opt, index) => (
-          <OptionBox key={index} imageUrl={opt.image} textButton={opt.text} />
+          <OptionBox key={index} imageUrl={opt.image} textButton={opt.text} screenName = {opt.screenName} navigation = {navigation} />
           ))}
       </View>
     </ScrollView>

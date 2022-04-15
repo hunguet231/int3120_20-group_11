@@ -2,15 +2,17 @@ import * as React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 
-const OptionBox = ({imageUrl, textButton}) => {
+const OptionBox = ({imageUrl, textButton,screenName, navigation}) => {
   return (
     <TouchableOpacity 
       style={styles.container}
+      onPress={()=>{
+        navigation.navigate(screenName);
+      }}
     >
       <Image source={imageUrl} style={styles.image} />
       <TouchableRipple
         style={styles.button}
-        onPress={()=>{}}
         rippleColor="rgba(0, 0, 0, .32)" 
         
       ><Text style={styles.text}>{textButton}</Text>

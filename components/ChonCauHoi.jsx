@@ -1,11 +1,14 @@
 import { View, Text, Button, Image, ScrollView, StyleSheet, Animated, Alert,TouchableOpacity,TouchableRipple, TouchableHighlight} from "react-native";
 import * as React from 'react';
 
-const ChonCauHoi = () => {
+const ChonCauHoi = ({navigation}) => {
     return (
         <View>
             <View style={styles.header}>
-                <TouchableOpacity style={styles.headerBtn}>
+                <TouchableOpacity style={styles.headerBtn}
+                onPress={()=>{
+                    navigation.goBack();
+                  }}>
                     <View>
                         <Text style={styles.headerText}>Câu 1/25</Text>
                         <Image source= {require('../assets/triangleDown.png')} style={styles.headerImg} />

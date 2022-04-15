@@ -3,7 +3,7 @@ import * as React from 'react';
 import Checkbox from "./Checkbox";
 //import { Checkbox } from 'antd';
 
-const CauHoi = () => {
+const CauHoi = ({navigation}) => {
     return (
         <View style = {styles.body}>
             <View style={styles.header}>
@@ -52,7 +52,10 @@ const CauHoi = () => {
                 
             </View>
             <View style={styles.footer}>
-                <TouchableOpacity style={styles.footerBtn}>
+                <TouchableOpacity style={styles.footerBtn}
+                onPress={()=>{
+                    navigation.navigate('Chọn câu hỏi');
+                }}>
                     <View>
                         <Image source= {require('../assets/triangle.png')} style={styles.footerImage} />
                         <Text style={styles.footerText}>Câu 1/25</Text>

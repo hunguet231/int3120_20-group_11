@@ -8,7 +8,7 @@ const Dashboad = ({navigation}) => {
     <ScrollView>
       <View style={styles.main}>
         {options.map((opt, index) => (
-          <OptionBox key={index} imageUrl={opt.image} textButton={opt.text} screenName = {opt.screenName} navigation = {navigation} />
+          <OptionBox key={index} imageUrl={opt.image} textButton={opt.text} navigation = {navigation} />
           ))}
       </View>
     </ScrollView>

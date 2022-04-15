@@ -18,7 +18,7 @@ const SatHach = ({navigation}) => {
                     {options.map((opt, index) => (
                         <TouchableOpacity key={index} style={styles.button1} 
                         onPress={()=>{
-                            navigation.navigate('CauHoi');
+                            navigation.navigate('Câu hỏi');
                         }}>
                            
                             <View style={styles.button}>

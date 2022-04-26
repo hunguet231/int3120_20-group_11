@@ -1,22 +1,27 @@
 import { AntDesign, Ionicons } from "@expo/vector-icons";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from "@react-navigation/drawer";
 import * as React from "react";
-import { AppConstant } from "../../constants";
-import SatHach from "../SatHach";
+import { DEFAULT_APP_COLOR } from "../constants";
+import HomeScreen from "../screens/HomeScreen";
+import SatHachScreen from "../screens/SatHachScreen";
 import Feedback from "./Feedback";
-import Menu from "./Menu";
 import Rate from "./Rate";
 import Setting from "./Setting/Setting";
 import Share from "./Share";
+import { Image } from "react-native";
 
-const Drawer = () => {
+const Drawer = ({ navigation }) => {
   const Drawer = createDrawerNavigator();
 
   return (
     <Drawer.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: AppConstant.DEFAULT_APP_COLOR,
+          backgroundColor: DEFAULT_APP_COLOR,
         },
         headerTitleStyle: {
           color: "#fff",
@@ -24,13 +29,39 @@ const Drawer = () => {
         headerTintColor: "#fff",
       }}
       initialRouteName="Trang chủ"
-      drawerContent={(props) => <Menu {...props} />}
+      drawerContent={(props) => {
+        const filteredProps = {
+          ...props,
+          state: {
+            ...props.state,
+            routeNames: props.state.routeNames.filter((routeName) => {
+              routeName !== "Thi sát hạch";
+            }),
+            routes: props.state.routes.filter(
+              (route) => route.name !== "Thi sát hạch"
+            ),
+          },
+        };
+
+        return (
+          <DrawerContentScrollView
+            contentContainerStyle={{ paddingTop: 0 }}
+            {...filteredProps}
+          >
+            <Image
+              source={require("../assets/menu.jpg")}
+              style={{ width: "100%", height: 150, marginBottom: 5 }}
+            />
+            <DrawerItemList {...filteredProps} />
+          </DrawerContentScrollView>
+        );
+      }}
     >
       <Drawer.Screen
         name="Trang chủ"
-        component={SatHach}
+        component={HomeScreen}
         options={{
-          title: "Trang chủ",
+          drawerLabel: "Trang chủ",
           drawerIcon: ({ focused, size }) => (
             <Ionicons
               name={`ios-home`}
@@ -39,12 +70,12 @@ const Drawer = () => {
             />
           ),
         }}
-      />
+      ></Drawer.Screen>
       <Drawer.Screen
         name="Chọn hạng bài thi"
         component={Setting}
         options={{
-          title: "Chọn hạng bài thi",
+          drawerLabel: "Chọn hạng bài thi",
           drawerIcon: ({ focused, size }) => (
             <Ionicons
               name={`ios-settings`}
@@ -58,7 +89,7 @@ const Drawer = () => {
         name="Thông tin phản hồi"
         component={Feedback}
         options={{
-          title: "Thông tin phản hồi",
+          drawerLabel: "Thông tin phản hồi",
           drawerIcon: ({ focused, size }) => (
             <Ionicons
               name={`ios-mail`}
@@ -72,7 +103,7 @@ const Drawer = () => {
         name="Chia sẻ ứng dụng"
         component={Share}
         options={{
-          title: "Chia sẻ ứng dụng",
+          drawerLabel: "Chia sẻ ứng dụng",
           drawerIcon: ({ focused, size }) => (
             <Ionicons
               name={`ios-share-social`}
@@ -86,7 +117,7 @@ const Drawer = () => {
         name="Đánh giá ứng dụng"
         component={Rate}
         options={{
-          title: "Đánh giá ứng dụng",
+          drawerLabel: "Đánh giá ứng dụng",
           drawerIcon: ({ focused, size }) => (
             <AntDesign
               name={`like1`}
@@ -94,6 +125,13 @@ const Drawer = () => {
               color={focused ? "#7092FE" : "#000"}
             />
           ),
+        }}
+      />
+      <Drawer.Screen
+        name="Thi sát hạch"
+        component={SatHachScreen}
+        options={{
+          drawerLabel: "Thi sát hạch",
         }}
       />
     </Drawer.Navigator>

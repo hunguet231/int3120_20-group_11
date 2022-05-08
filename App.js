@@ -5,6 +5,13 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import { AppConstant } from './constants';
 import Drawer from './components/common/Drawer';
 import AppNavigator from './components/AppNavigator';
+// Amplify
+import Amplify from "aws-amplify";
+
+
+// Amplify Configurations
+import awsExports from "./src/aws-exports";
+Amplify.configure(awsExports);
 
 export default class App extends React.Component {
 

@@ -1,12 +1,76 @@
-import { View, Text, Button, Image, ScrollView, StyleSheet, Animated, Alert,TouchableOpacity,TouchableRipple, TouchableHighlight} from "react-native";
-import { options } from "../utils/sathachOptions";
-import * as React from 'react';
+import { View, Text, Button, Image, ScrollView, StyleSheet, Animated, Alert,TouchableOpacity, TouchableHighlight} from "react-native";
+import React, { useEffect, useState } from "react";
+import { API } from "aws-amplify";
+import { listSets } from '../src/graphql/queries';
 
 const content = 'Hãy làm nhiều đề sát hạch bên dưới để đánh giá khả năng luyên thi của bạn'
 
 
 
 const SatHach = ({navigation}) => {
+
+
+    const [sets, setSets] = useState([]);
+    const [isLoading, setLoading] = useState(true);
+
+    useEffect(async () => {
+        
+        
+        await fetchSets();
+    }, []);
+
+    const fetchSets = async () => {
+        try {
+            setLoading(true);
+            // Switch authMode to API_KEY for public access
+            const { data } = await API.graphql({
+                query: listSets,
+                authMode: "API_KEY"
+          });
+          const res = data.listSets.items;
+          console.log(res[0].questions);
+          setSets(res);
+          setLoading(false);
+        } catch (err) {
+          console.log(err);
+        }
+    };
+    
+
+    if (isLoading) {
+        return (<Text>Loading...</Text>);
+    }
+
+    sets.sort((a, b) => {
+        return a.id - b.id;
+    })
+    
+    let component = [];
+    for (let i=0; i<sets.length; i++) {
+        if (sets[i].type === 'A1')
+        component.push(
+            <TouchableHighlight key = {i} style={styles.button1} 
+                        onPress={()=>{
+                            navigation.navigate('Câu hỏi', {id : sets[i].id});
+                        }}>
+                <View style={styles.button}>
+                    <View style = {styles.container1}>
+                        <View style = {styles.containerBox1}>
+                            <Text style = {styles.containerBox1Content}>Đề số {sets[i].id}</Text>
+                        </View>
+                    </View>
+                        <Text style = {styles.process}>{sets[i].chosen_number}/{sets[i].total}</Text>
+                    <View style = {styles.processBar}>
+						<View style = {styles.goal}></View>
+                        <View style = {[styles.current, {width: sets[i].chosen_number*styles.goal.width/sets[i].total}]}></View>
+					</View>
+                </View>
+
+             </TouchableHighlight>
+        )
+    }
+    
+
     return (
         <View style={{backgroundColor: 'white'}} >
             <View style={styles.header}>
@@ -14,28 +78,8 @@ const SatHach = ({navigation}) => {
             </View>
             <ScrollView style={{height: 580}}>
                 <View style={styles.main}>
-                    
-                    {options.map((opt, index) => (
-                        <TouchableOpacity key={index} style={styles.button1} 
-                        onPress={()=>{
-                            navigation.navigate('Câu hỏi');
-                        }}>
-                           
-                            <View style={styles.button}>
-                                <View style = {styles.container1}>
-                                    <View style = {styles.containerBox1}>
-                                        <Text style = {styles.containerBox1Content}>{opt.name}</Text>
-                                    </View>
-                                </View>
-                                <Text style = {styles.process}>{opt.done}/{opt.total}</Text>
-                                <View style = {styles.processBar}>
-						        <View style = {styles.goal}></View>
-                                <View style = {[styles.current, {width: opt.done*styles.goal.width/opt.total}]}></View>
-					        </View>
-                            </View>
-                        </TouchableOpacity>
-                    ))}
-                    
+
+                    {component}                    
 
                 </View>
             </ScrollView>
@@ -57,7 +101,9 @@ const SatHach = ({navigation}) => {
         backgroundColor: '#fff',
         borderBottomWidth: 2,
         height: 75,
-        padding: 15,
+        paddingLeft: 15,
+        paddingRight: 15,
+        justifyContent: 'center'
     },
     headerContent: {
         fontFamily: 'Roboto',
@@ -91,7 +137,7 @@ const SatHach = ({navigation}) => {
         },
         shadowOpacity: 0.25,
         shadowRadius: 7,
-        elevation: 5,
+        elevation: 4,
         
     },
     

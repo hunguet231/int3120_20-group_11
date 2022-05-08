@@ -2,6 +2,21 @@ import { View, Text, Button, Image, ScrollView, StyleSheet, Animated, Alert,Touc
 import * as React from 'react';
 
 const ChonCauHoi = ({navigation}) => {
+    var doneQuestion = [1];
+    let curentIndex = 1;
+    var questionIndexs = [];
+    let defaultColor = '#E4E4E4'
+
+    for (let i = 1; i <= 25; i++) {
+        defaultColor = '#E4E4E4'
+        if(doneQuestion.includes(i)) defaultColor = '#7092FE';
+        questionIndexs.push(
+            <View key={i} style={[styles.questionBox, {backgroundColor: defaultColor,}]} >
+                <Text style={styles.index}>{i}</Text>
+            </View>
+        );
+    }
+
     return (
         <View>
             <View style={styles.header}>
@@ -10,30 +25,12 @@ const ChonCauHoi = ({navigation}) => {
                     navigation.goBack();
                   }}>
                     <View>
-                        <Text style={styles.headerText}>Câu 1/25</Text>
+                        <Text style={styles.headerText}>Câu {curentIndex}/25</Text>
                         <Image source= {require('../assets/triangleDown.png')} style={styles.headerImg} />
                     </View>
                 </TouchableOpacity>
                 <View style={styles.body}>
-                    <View style={styles.questionBox}>
-                        <Text style={styles.index}>1</Text>
-                    </View>
-                    <View style={styles.questionBox}>
-                        <Text>2</Text>
-                    </View>
-                    <View style={styles.questionBox}>
-                        <Text>3</Text>
-                    </View>
-                    <View style={styles.questionBox}>
-                        <Text>4</Text>
-                    </View>
-                    <View style={styles.questionBox}>
-                        <Text>5</Text>
-                    </View>
-
-                    
-
-                    
+                    {questionIndexs}
                 </View>
             </View>
         </View>
@@ -76,24 +73,25 @@ const styles = StyleSheet.create({
         marginBottom: 'auto',
     },
     body: {
-        display: 'flex',
         width: '100%',
         display: 'flex',
         flexWrap: 'wrap',
         flexGrow: 5,
-        alignContent: 'space-around',
         paddingLeft: 15,
         paddingRight: 15,
         paddingTop: 20,
+        width: 400,
+        flexDirection: 'row',
     },
     questionBox: {
-        width: 50,
-        height: 50,
+        width: 60,
+        height: 60,
         borderRadius: 50,
-        backgroundColor: '#E4E4E4',
         alignItems: 'center',
         marginTop: 10,
         marginBottom: 10,
+        marginLeft: 5,
+        marginRight: 5,
         
     },
     index: {

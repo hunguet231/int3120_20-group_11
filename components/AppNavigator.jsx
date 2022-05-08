@@ -16,7 +16,7 @@ const AppNavigator = () => {
               }}/>
                 <Screen name="Thi sát hạch" component={SatHach} options={options}/>
                 <Screen name="Câu hỏi" component={CauHoi} options={options}/>
-                <Screen name="Chọn câu hỏi" component={ChonCauHoi} options={options}/>
+                <Screen name="Chọn câu hỏi" component={ChonCauHoi} options={options, {headerShown: false}}/>
             </Navigator>
 )};
 

@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { RadioButton, TouchableRipple } from "react-native-paper";
 import { AppConstant } from "../constants";
+import Clock from "./Clock";
 
 function CauHoi({ route, navigation }) {
   // Lay id parameter da truyen vao tu truoc
@@ -79,11 +80,7 @@ function CauHoi({ route, navigation }) {
   return (
     <View style={styles.body}>
       <View style={styles.header}>
-        <View style={styles.clock}>
-          <Image source={require("../assets/clock.png")} style={styles.image} />
-          <Text style={styles.clockTime}>18:54</Text>
-        </View>
-
+        <Clock />
         <Text style={styles.headerText}>
           Câu số {index}
           /25
@@ -220,18 +217,6 @@ const styles = {
     paddingLeft: 15,
     paddingRight: 15,
   },
-  clock: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
-  },
-  image: {
-    width: 20,
-    height: 20,
-  },
-  clockTime: {
-    marginLeft: 3,
-  },
   headerText: {
     fontSize: 14,
   },
@@ -244,7 +229,7 @@ const styles = {
     paddingBottom: 5,
   },
   question: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "600",
     lineHeight: 18,
     borderBottomWidth: 1,

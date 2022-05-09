@@ -1,3 +1,3 @@
-import * as AppConstant from "./app.constant";
+import * as AppConstant from './app.constant';
 
 export { AppConstant };

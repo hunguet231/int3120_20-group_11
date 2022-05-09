@@ -1,32 +1,29 @@
 import * as React from 'react';
+// eslint-disable-next-line import/namespace
 import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 
-const OptionBox = ({imageUrl, textButton, navigation}) => {
+const OptionBox = ({ imageUrl, textButton, navigation }) => {
   return (
-    <TouchableOpacity 
+    <TouchableOpacity
       style={styles.container}
-      onPress={()=>{
+      onPress={() => {
         navigation.navigate(textButton);
-      }}
-    >
+      }}>
       <Image source={imageUrl} style={styles.image} />
-      <TouchableRipple
-        style={styles.button}
-        rippleColor="rgba(0, 0, 0, .32)" 
-        
-      ><Text style={styles.text}>{textButton}</Text>
+      <TouchableRipple style={styles.button} rippleColor="rgba(0, 0, 0, .32)">
+        <Text style={styles.text}>{textButton}</Text>
       </TouchableRipple>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     shadowColor: 'rgb(149, 157, 165)',
     shadowOpacity: 0.2,
-    shadowOffset: {width: 0, height: 8},
+    shadowOffset: { width: 0, height: 8 },
     shadowRadius: 24,
     borderRadius: 5,
     width: 160,
@@ -59,7 +56,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 13,
-  }
+  },
 });
 
-export default OptionBox
+export default OptionBox;

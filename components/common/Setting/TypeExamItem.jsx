@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { StyleSheet, Text, View } from "react-native";
+// eslint-disable-next-line import/namespace
+import { StyleSheet, Text, View } from 'react-native';
 
-const TypeExamItem = ({title, desc, checked}) => {
-
+const TypeExamItem = ({ title, desc, checked }) => {
   return (
     <View style={styles.type}>
       <View style={styles.info}>
@@ -10,8 +10,8 @@ const TypeExamItem = ({title, desc, checked}) => {
         <Text style={styles.desc}>{desc}</Text>
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   type: {
@@ -22,10 +22,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#e2e2e2',
     paddingBottom: 10,
-    shadowColor: 'rgb(149, 157, 165)',
-    shadowOpacity: 0.2,
-    shadowOffset: {width: 0, height: 8},
-    shadowRadius: 24,
     flex: 4,
   },
   title: {
@@ -35,7 +31,7 @@ const styles = StyleSheet.create({
   desc: {
     color: '#7B7878',
     marginTop: 3,
-  }
+  },
 });
 
-export default TypeExamItem
+export default TypeExamItem;

@@ -19,4 +19,4 @@ export const options = [
     image: require('../assets/5.png'),
     text: 'Các câu sai',
   },
-]
+];

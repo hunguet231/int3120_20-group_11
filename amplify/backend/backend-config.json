@@ -1,0 +1,22 @@
+{
+  "api": {
+    "mobileproject": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 120,
+              "apiKeyExpirationDate": "2022-09-03T02:06:42.065Z",
+              "description": "Key for api using in mobile project"
+            }
+          },
+          "additionalAuthenticationProviders": []
+        }
+      }
+    }
+  }
+}

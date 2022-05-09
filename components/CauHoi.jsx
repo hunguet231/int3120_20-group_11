@@ -206,6 +206,7 @@ const styles = {
   body: {
     height: "100%",
     width: "100%",
+    backgroundColor: "#fff",
   },
   header: {
     height: 50,
@@ -227,6 +228,9 @@ const styles = {
     paddingRight: 8,
     paddingTop: 5,
     paddingBottom: 5,
+  },
+  endBtnHighLight: {
+    backgroundColor: "rgb(112 146 254)",
   },
   question: {
     fontSize: 14,
@@ -273,7 +277,7 @@ const styles = {
     fontSize: 14,
     lineHeight: 18,
     alignItems: "center",
-    color: "green",
+    color: "#099D18",
     marginLeft: 8,
     flex: 1,
   },

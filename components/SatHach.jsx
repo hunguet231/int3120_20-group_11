@@ -102,17 +102,16 @@ function SatHach({ navigation }) {
       <View style={styles.header}>
         <Text style={styles.headerContent}>{content}</Text>
       </View>
-      <ScrollView style={{ height: 580 }}>
+      <ScrollView>
         <View style={styles.main}>{examList}</View>
+        <View style={styles.footer}>
+          <TouchableOpacity style={styles.footerBtn}>
+            <View>
+              <Text style={styles.footerBtnText}>Chọn đề ngẫu nhiên</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
-
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.footerBtn}>
-          <View>
-            <Text style={styles.footerBtnText}>Chọn đề ngẫu nhiên</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }
@@ -141,8 +140,8 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0, 0, 0, 0.15)",
     borderStyle: "solid",
     borderWidth: 1,
-    marginBottom: 10,
-    marginTop: 10,
+    marginBottom: 5,
+    marginTop: 5,
     width: "100%",
     height: 50,
     borderRadius: 8,
@@ -214,6 +213,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   footer: {
+    marginTop: 10,
     paddingBottom: 10,
     paddingTop: 0,
     alignItems: "center",

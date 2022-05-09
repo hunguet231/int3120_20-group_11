@@ -1,6 +1,5 @@
-import * as React from 'react';
-// eslint-disable-next-line import/namespace
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 const TypeExamItem = ({ title, desc, checked }) => {
   return (
@@ -17,19 +16,19 @@ const styles = StyleSheet.create({
   type: {
     marginLeft: 15,
     marginTop: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     borderBottomWidth: 1,
-    borderBottomColor: '#e2e2e2',
+    borderBottomColor: "#e2e2e2",
     paddingBottom: 10,
     flex: 4,
   },
   title: {
     fontSize: 15,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   desc: {
-    color: '#7B7878',
+    color: "#7B7878",
     marginTop: 3,
   },
 });

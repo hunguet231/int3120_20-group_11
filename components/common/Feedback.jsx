@@ -1,6 +1,5 @@
-import * as React from 'react';
-// eslint-disable-next-line import/namespace
-import { View, Text, StyleSheet } from 'react-native';
+import * as React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 const Feedback = () => {
   return (
@@ -12,8 +11,8 @@ const Feedback = () => {
 
 const styles = StyleSheet.create({
   feedback: {
-    backgroundColor: '#fff',
-    height: '100%',
+    backgroundColor: "#fff",
+    height: "100%",
   },
 });
 

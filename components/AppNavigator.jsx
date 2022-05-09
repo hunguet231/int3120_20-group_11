@@ -1,11 +1,10 @@
-import { createStackNavigator } from '@react-navigation/stack';
-import * as React from 'react';
-
-import { AppConstant } from '../constants';
-import CauHoi from './CauHoi';
-import ChonCauHoi from './ChonCauHoi';
-import SatHach from './SatHach';
-import Drawer from './common/Drawer';
+import { createStackNavigator } from "@react-navigation/stack";
+import * as React from "react";
+import { AppConstant } from "../constants";
+import CauHoi from "./CauHoi";
+import ChonCauHoi from "./ChonCauHoi";
+import SatHach from "./SatHach";
+import Drawer from "./common/Drawer";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -35,10 +34,10 @@ const options = {
     backgroundColor: AppConstant.DEFAULT_APP_COLOR,
   },
   headerTitleStyle: {
-    color: '#fff',
+    color: "#fff",
   },
-  headerTintColor: '#fff',
-  headerTitleAlign: 'center',
+  headerTintColor: "#fff",
+  headerTitleAlign: "center",
 };
 
 export default AppNavigator;

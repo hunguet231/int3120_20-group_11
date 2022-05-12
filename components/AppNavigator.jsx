@@ -1,11 +1,11 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
-import LyThuyet from "./LyThuyet";
 import { AppConstant } from "../constants";
-import CauHoi from "./CauHoi";
-import ChonCauHoi from "./ChonCauHoi";
-import SatHach from "./SatHach";
-import Drawer from "./common/Drawer";
+import CauHoi from "./sat-hach/CauHoi";
+import ChonCauHoi from "./sat-hach/ChonCauHoi";
+import Drawer from "./menu/Drawer";
+import LyThuyet from "./ly-thuyet/LyThuyet";
+import SatHach from "./sat-hach/SatHach";
 
 const { Navigator, Screen } = createStackNavigator();
 

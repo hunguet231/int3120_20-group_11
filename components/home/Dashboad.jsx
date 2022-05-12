@@ -1,9 +1,7 @@
-import * as React from 'react';
-// eslint-disable-next-line import/namespace
-import { ScrollView, StyleSheet, View } from 'react-native';
-
-import { options } from '../../utils/options';
-import OptionBox from './OptionBox';
+import * as React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { options } from "../../utils/options";
+import OptionBox from "./OptionBox";
 
 const Dashboad = ({ navigation }) => {
   return (
@@ -28,10 +26,10 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 20,
-    backgroundColor: '#fff',
-    height: 'calc(100vh - 64px)',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    backgroundColor: "#fff",
+    height: "calc(100vh - 64px)",
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
 });
 

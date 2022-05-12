@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { AppConstant } from "../constants";
+import { AppConstant } from "../../constants";
 
 function ChonCauHoi({ navigation }) {
   const doneQuestion = [1];
@@ -36,7 +36,7 @@ function ChonCauHoi({ navigation }) {
               /25
             </Text>
             <Image
-              source={require("../assets/triangleDown.png")}
+              source={require("../../assets/triangleDown.png")}
               style={styles.headerImg}
             />
           </View>

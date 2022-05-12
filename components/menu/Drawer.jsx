@@ -6,7 +6,7 @@ import Dashboad from "../home/Dashboad";
 import Feedback from "./Feedback";
 import Menu from "./Menu";
 import Rate from "./Rate";
-import Setting from "./Setting/Setting";
+import Setting from "./setting-type-exam/Setting";
 import Share from "./Share";
 
 const Drawer = ({ navigation }) => {

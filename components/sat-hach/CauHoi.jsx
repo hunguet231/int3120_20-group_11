@@ -8,8 +8,8 @@ import {
   View,
 } from "react-native";
 import { RadioButton, TouchableRipple } from "react-native-paper";
-import { AppConstant } from "../constants";
-import Clock from "./Clock";
+import { AppConstant } from "../../constants";
+import Clock from "../shared/Clock";
 
 function CauHoi({ route, navigation }) {
   // Lay id parameter da truyen vao tu truoc
@@ -82,8 +82,7 @@ function CauHoi({ route, navigation }) {
       <View style={styles.header}>
         <Clock />
         <Text style={styles.headerText}>
-          Câu số {index}
-          /25
+          Câu số {index}/{questions.length}
         </Text>
         <TouchableHighlight style={styles.endBtn}>
           {index === 25 ? (
@@ -188,7 +187,7 @@ function CauHoi({ route, navigation }) {
         >
           <View>
             <Image
-              source={require("../assets/triangle.png")}
+              source={require("../../assets/triangle.png")}
               style={styles.footerImage}
             />
             <Text style={styles.footerText}>
@@ -222,12 +221,15 @@ const styles = {
     fontSize: 14,
   },
   endBtn: {
-    backgroundColor: "#B4B4B4",
+    background: "rgb(112 146 254)",
     borderRadius: 6,
     paddingLeft: 8,
     paddingRight: 8,
     paddingTop: 5,
     paddingBottom: 5,
+  },
+  endBtnText: {
+    color: "#fff",
   },
   endBtnHighLight: {
     backgroundColor: "rgb(112 146 254)",

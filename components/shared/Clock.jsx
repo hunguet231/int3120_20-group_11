@@ -18,7 +18,7 @@ const Clock = () => {
 
   return (
     <View style={styles.clock}>
-      <Image source={require("../assets/clock.png")} style={styles.image} />
+      <Image source={require("../../assets/clock.png")} style={styles.image} />
       <Text style={styles.clockTime}>
         <Countdown date={Date.now() + 20 * 60 * 1000} renderer={renderer} />
       </Text>

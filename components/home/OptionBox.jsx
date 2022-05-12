@@ -1,7 +1,6 @@
-import * as React from 'react';
-// eslint-disable-next-line import/namespace
-import { Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { TouchableRipple } from 'react-native-paper';
+import * as React from "react";
+import { Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { TouchableRipple } from "react-native-paper";
 
 const OptionBox = ({ imageUrl, textButton, navigation }) => {
   return (
@@ -9,7 +8,8 @@ const OptionBox = ({ imageUrl, textButton, navigation }) => {
       style={styles.container}
       onPress={() => {
         navigation.navigate(textButton);
-      }}>
+      }}
+    >
       <Image source={imageUrl} style={styles.image} />
       <TouchableRipple style={styles.button} rippleColor="rgba(0, 0, 0, .32)">
         <Text style={styles.text}>{textButton}</Text>
@@ -20,8 +20,8 @@ const OptionBox = ({ imageUrl, textButton, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    shadowColor: 'rgb(149, 157, 165)',
+    backgroundColor: "#fff",
+    shadowColor: "rgb(149, 157, 165)",
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 8 },
     shadowRadius: 24,
@@ -34,14 +34,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginLeft: 5,
     marginRight: 5,
-    alignItems: 'stretch',
+    alignItems: "stretch",
   },
   image: {
     width: 100,
     height: 100,
-    backgroundColor: '#f2f2f2',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    backgroundColor: "#f2f2f2",
+    marginLeft: "auto",
+    marginRight: "auto",
     marginBottom: 5,
     marginTop: 0,
   },
@@ -50,11 +50,11 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 8,
-    backgroundColor: '#eee',
+    backgroundColor: "#eee",
     borderRadius: 11,
   },
   text: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 13,
   },
 });

@@ -9,14 +9,12 @@ import {
   TouchableOpacity,
   View,
   Alert,
+  Image,
 } from "react-native";
-import { AppConstant } from "../constants";
-import { listSets } from "../src/graphql/queries";
+import { AppConstant } from "../../constants";
+import { listSets } from "../../src/graphql/queries";
 
-const content =
-  "Hãy làm nhiều đề sát hạch bên dưới để đánh giá khả năng luyện thi của bạn";
-
-function SatHach({ navigation }) {
+function LyThuyet({ navigation }) {
   const [sets, setSets] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
@@ -52,64 +50,48 @@ function SatHach({ navigation }) {
     );
   }
 
-  sets.sort((a, b) => a.id - b.id);
-
-  const examList = [];
-  for (let i = 0; i < sets.length; i++) {
-    if (sets[i].type === "A1") {
-      examList.push(
-        <TouchableHighlight
-          activeOpacity={0.6}
-          underlayColor="#DDDDDD"
-          key={i}
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate("Câu hỏi", { id: sets[i].id });
-          }}
-        >
-          <View>
-            <View style={styles.container1}>
-              <View style={styles.containerBox1}>
-                <Text style={styles.containerBox1Content}>
-                  Đề số {sets[i].id}
-                </Text>
-              </View>
-            </View>
-            <Text style={styles.process}>
-              {sets[i].chosen_number}/{sets[i].total}
-            </Text>
-            <View style={styles.processBar}>
-              <View style={styles.goal} />
-              <View
-                style={[
-                  styles.current,
-                  {
-                    width:
-                      (sets[i].chosen_number * styles.goal.width) /
-                      sets[i].total,
-                  },
-                ]}
-              />
-            </View>
-          </View>
-        </TouchableHighlight>
-      );
-    }
-  }
-
   return (
     <View style={{ backgroundColor: "white" }}>
-      <View style={styles.header}>
-        <Text style={styles.headerContent}>{content}</Text>
-      </View>
       <ScrollView>
-        <View style={styles.main}>{examList}</View>
-        <View style={styles.footer}>
-          <TouchableOpacity style={styles.footerBtn}>
+        <View style={styles.main}>
+          <TouchableHighlight
+            activeOpacity={0.6}
+            underlayColor="#DDDDDD"
+            // key={i}
+            style={styles.button}
+            // onPress={() => {
+            //   navigation.navigate("Câu hỏi", { id: sets[i].id });
+            // }}
+          >
             <View>
-              <Text style={styles.footerBtnText}>Chọn đề ngẫu nhiên</Text>
+              <View style={styles.optionBox}>
+                <Image
+                  source={require("../../assets/lt-1.png")}
+                  style={styles.image}
+                />
+                <View style={styles.text}>
+                  <Text style={styles.heading}>50 câu điểm liệt</Text>
+                  <Text style={styles.subHeading}>Gồm 50 câu điểm liệt</Text>
+                  <View style={styles.bar}>
+                    <View style={styles.processBar}>
+                      <View
+                        style={[
+                          styles.current,
+                          {
+                            width:
+                              // (sets[i].chosen_number * styles.goal.width) /
+                              // sets[i].total,
+                              100,
+                          },
+                        ]}
+                      />
+                    </View>
+                    <Text style={styles.process}>0/20</Text>
+                  </View>
+                </View>
+              </View>
             </View>
-          </TouchableOpacity>
+          </TouchableHighlight>
         </View>
       </ScrollView>
     </View>
@@ -117,39 +99,43 @@ function SatHach({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  headerContent: {
-    backgroundColor: "#fff",
-    marginTop: 15,
-    justifyContent: "center",
-    fontSize: 15,
-    fontWeight: "400",
-    color: "#000000",
-    lineHeight: 17,
-    paddingLeft: 15,
-    paddingRight: 15,
-  },
   main: {
+    minHeight: "calc(100vh - 64px)",
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 10,
     backgroundColor: "#fff",
     flexDirection: "column",
   },
-  button: {
-    backgroundColor: "#fff",
+  optionBox: {
     borderColor: "rgba(0, 0, 0, 0.15)",
     borderStyle: "solid",
     borderWidth: 1,
     marginBottom: 5,
     marginTop: 5,
     width: "100%",
-    height: 50,
     borderRadius: 8,
     shadowColor: "rgb(149, 157, 165)",
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 8 },
     shadowRadius: 24,
     elevation: 4,
+    flexDirection: "row",
+    paddingTop: 10,
+  },
+  image: {
+    height: 100,
+    width: 100,
+    marginRight: 10,
+    borderRadius: 8,
+  },
+  heading: {
+    fontSize: 16,
+    textTransform: "uppercase",
+    fontWeight: "700",
+  },
+  subHeading: {
+    color: "#7B7878",
   },
   loading: {
     marginTop: 10,
@@ -179,24 +165,21 @@ const styles = StyleSheet.create({
     letterSpacing: 0,
     textAlign: "left",
   },
+  bar: {
+    flexDirection: "row",
+    marginTop: 10,
+    alignItems: "center",
+  },
   process: {
-    width: 80,
-    height: 26,
-    position: "absolute",
-    transform: [{ translateX: 74.7755 }, { translateY: 12 }],
     color: "rgb(0, 0, 0)",
     fontSize: 16,
     fontWeight: "700",
-    lineHeight: 24,
     letterSpacing: 0,
     textAlign: "center",
   },
   processBar: {
     width: 150,
     height: 13,
-    position: "absolute",
-    left: 165,
-    top: 20,
   },
   goal: {
     width: 150,
@@ -209,7 +192,6 @@ const styles = StyleSheet.create({
     height: 13,
     backgroundColor: "rgb(128, 128, 128)",
     position: "absolute",
-    transform: [{ translateX: 1 }],
     borderRadius: 10,
   },
   footer: {
@@ -234,4 +216,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SatHach;
+export default LyThuyet;

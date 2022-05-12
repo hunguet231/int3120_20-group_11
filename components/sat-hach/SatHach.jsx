@@ -10,6 +10,7 @@ import {
   View,
   Alert,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AppConstant } from "../../constants";
 import { listSets } from "../../src/graphql/queries";
 
@@ -20,11 +21,24 @@ function SatHach({ navigation }) {
   const [sets, setSets] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
+  const getTypeExamFromStorage = async () => {
+    try {
+      const data = await AsyncStorage.getItem("@type_exam");
+      if (data !== null) {
+        return data;
+      } else return "A1";
+    } catch (e) {
+      console.log(e);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
+    }
+  };
+
   useEffect(async () => {
-    await fetchSets();
+    const type = await getTypeExamFromStorage();
+    await fetchSets(type);
   }, []);
 
-  const fetchSets = async () => {
+  const fetchSets = async (type) => {
     try {
       setLoading(true);
       // Switch authMode to API_KEY for public access
@@ -33,8 +47,11 @@ function SatHach({ navigation }) {
         authMode: "API_KEY",
       });
       const res = data.listSets.items;
-      console.log(res[0].questions);
-      setSets(res);
+      // console.log(res[0].questions);
+      res.sort((a, b) => a.id - b.id);
+
+      const filteredSets = res.filter((set) => set.type === type);
+      setSets(filteredSets);
       setLoading(false);
     } catch (err) {
       console.log(err);
@@ -52,65 +69,73 @@ function SatHach({ navigation }) {
     );
   }
 
-  sets.sort((a, b) => a.id - b.id);
-
-  const examList = [];
-  for (let i = 0; i < sets.length; i++) {
-    if (sets[i].type === "A1") {
-      examList.push(
-        <TouchableHighlight
-          activeOpacity={0.6}
-          underlayColor="#DDDDDD"
-          key={i}
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate("Câu hỏi", { id: sets[i].id });
-          }}
-        >
-          <View>
-            <View style={styles.container1}>
-              <View style={styles.containerBox1}>
-                <Text style={styles.containerBox1Content}>
-                  Đề số {sets[i].id}
-                </Text>
-              </View>
-            </View>
-            <Text style={styles.process}>
-              {sets[i].chosen_number}/{sets[i].total}
-            </Text>
-            <View style={styles.processBar}>
-              <View style={styles.goal} />
-              <View
-                style={[
-                  styles.current,
-                  {
-                    width:
-                      (sets[i].chosen_number * styles.goal.width) /
-                      sets[i].total,
-                  },
-                ]}
-              />
-            </View>
-          </View>
-        </TouchableHighlight>
-      );
-    }
-  }
-
   return (
     <View style={{ backgroundColor: "white" }}>
       <View style={styles.header}>
         <Text style={styles.headerContent}>{content}</Text>
       </View>
       <ScrollView>
-        <View style={styles.main}>{examList}</View>
-        <View style={styles.footer}>
-          <TouchableOpacity style={styles.footerBtn}>
-            <View>
-              <Text style={styles.footerBtnText}>Chọn đề ngẫu nhiên</Text>
+        {sets.length ? (
+          <View>
+            <View style={styles.main}>
+              {sets.map((set) => (
+                <TouchableHighlight
+                  activeOpacity={0.6}
+                  underlayColor="#DDDDDD"
+                  key={set.id}
+                  style={styles.button}
+                  onPress={() => {
+                    navigation.navigate("Câu hỏi", { id: set.id });
+                  }}
+                >
+                  <View>
+                    <View style={styles.container1}>
+                      <View style={styles.containerBox1}>
+                        <Text style={styles.containerBox1Content}>
+                          Đề số {set.id}
+                        </Text>
+                      </View>
+                    </View>
+                    <Text style={styles.process}>
+                      {set.chosen_number}/{set.total}
+                    </Text>
+                    <View style={styles.processBar}>
+                      <View style={styles.goal} />
+                      <View
+                        style={[
+                          styles.current,
+                          {
+                            width:
+                              (set.chosen_number * styles.goal.width) /
+                              set.total,
+                          },
+                        ]}
+                      />
+                    </View>
+                  </View>
+                </TouchableHighlight>
+              ))}
             </View>
-          </TouchableOpacity>
-        </View>
+            <View style={styles.footer}>
+              <TouchableOpacity style={styles.footerBtn}>
+                <View>
+                  <Text
+                    style={styles.footerBtnText}
+                    onPress={() => {
+                      navigation.navigate("Câu hỏi", {
+                        id: sets[Math.floor(Math.random() * sets.length)].id,
+                      });
+                    }}
+                  >
+                    Chọn đề ngẫu nhiên
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        ) : (
+          <Text style={{ margin: 15 }}>Không có đề thi nào!</Text>
+        )}
       </ScrollView>
     </View>
   );

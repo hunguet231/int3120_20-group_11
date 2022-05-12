@@ -1,14 +1,41 @@
-import * as React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useEffect } from "react";
+import { StyleSheet, Text, TouchableOpacity, View, Alert } from "react-native";
 import { RadioButton, TouchableRipple } from "react-native-paper";
 import { AppConstant } from "../../../constants";
 import TypeExamItem from "./TypeExamItem";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const Setting = () => {
-  const [value, setValue] = React.useState("first");
+const Setting = ({ navigation }) => {
+  const [value, setValue] = React.useState("");
 
   const handleChange = (value) => {
     setValue(value);
+  };
+
+  const getTypeExamFromStorage = async () => {
+    try {
+      const data = await AsyncStorage.getItem("@type_exam");
+      if (data !== null) {
+        setValue(data);
+      } else setValue("A1");
+    } catch (e) {
+      console.log(e);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
+    }
+  };
+
+  useEffect(() => {
+    getTypeExamFromStorage();
+  }, []);
+
+  const handleSaveType = async () => {
+    try {
+      await AsyncStorage.setItem("@type_exam", value);
+      navigation.navigate("Trang chủ");
+    } catch (e) {
+      console.log(e);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
+    }
   };
 
   return (
@@ -19,7 +46,7 @@ const Setting = () => {
         value={value}
       >
         <TouchableRipple
-          onPress={() => handleChange("first")}
+          onPress={() => handleChange("A1")}
           rippleColor="rgba(0, 0, 0, .32)"
         >
           <View style={styles.item}>
@@ -30,13 +57,13 @@ const Setting = () => {
             />
             <RadioButton.Android
               color={AppConstant.DEFAULT_APP_COLOR}
-              value="first"
+              value="A1"
               style={styles.radio}
             />
           </View>
         </TouchableRipple>
         <TouchableRipple
-          onPress={() => handleChange("second")}
+          onPress={() => handleChange("A2")}
           rippleColor="rgba(0, 0, 0, .32)"
         >
           <View style={styles.item}>
@@ -47,14 +74,16 @@ const Setting = () => {
             />
             <RadioButton.Android
               color={AppConstant.DEFAULT_APP_COLOR}
-              value="second"
+              value="A2"
               style={styles.radio}
             />
           </View>
         </TouchableRipple>
       </RadioButton.Group>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.textBtn}>Xong</Text>
+        <Text style={styles.textBtn} onPress={handleSaveType}>
+          Xong
+        </Text>
       </TouchableOpacity>
     </View>
   );

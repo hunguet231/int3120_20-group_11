@@ -2,21 +2,29 @@ import * as React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AppConstant } from "../../constants";
 
-function ChonCauHoi({ navigation }) {
-  const doneQuestion = [1];
-  const curentIndex = 1;
+function ChonCauHoi({ route, navigation }) {
+  const { current, total, setIndex, selectedQuestions } = route.params;
+
   const questionIndexs = [];
   let defaultColor = "#E4E4E4";
 
-  for (let i = 1; i <= 25; i++) {
+  for (let i = 0; i < total; i++) {
     defaultColor = "#E4E4E4";
-    if (doneQuestion.includes(i)) defaultColor = "#7092FE";
+    if (selectedQuestions.includes(i)) defaultColor = "#7092FE";
     questionIndexs.push(
       <View
         key={i}
         style={[styles.questionBox, { backgroundColor: defaultColor }]}
       >
-        <Text style={styles.index}>{i}</Text>
+        <Text
+          style={styles.index}
+          onPress={() => {
+            setIndex(i);
+            navigation.goBack();
+          }}
+        >
+          {i + 1}
+        </Text>
       </View>
     );
   }
@@ -32,8 +40,7 @@ function ChonCauHoi({ navigation }) {
         >
           <View>
             <Text style={styles.headerText}>
-              Câu {curentIndex}
-              /25
+              Câu {current}/{total}
             </Text>
             <Image
               source={require("../../assets/triangleDown.png")}
@@ -84,7 +91,7 @@ const styles = StyleSheet.create({
     width: "100%",
     display: "flex",
     flexWrap: "wrap",
-    flexGrow: 5,
+    flexGrow: 4,
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 20,
@@ -95,16 +102,17 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 50,
     alignItems: "center",
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 5,
+    marginBottom: 5,
     marginLeft: 5,
-    marginRight: 5,
+    cursor: "pointer",
   },
   index: {
-    marginTop: "auto",
-    marginBottom: "auto",
-    marginLeft: "auto",
-    marginRight: "auto",
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

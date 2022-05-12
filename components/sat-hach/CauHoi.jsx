@@ -6,30 +6,38 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   View,
+  Alert,
+  ActivityIndicator,
 } from "react-native";
 import { RadioButton, TouchableRipple } from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AppConstant } from "../../constants";
 import Clock from "../shared/Clock";
 
 function CauHoi({ route, navigation }) {
   // Lay id parameter da truyen vao tu truoc
-  const param = route.params.id;
+  const { id } = route.params;
 
-  const [id, setId] = React.useState(param);
-  const [index, setIndex] = React.useState(1);
+  // const [id, setId] = React.useState(param);
+  const [index, setIndex] = React.useState(0);
   const [questions, setQuestions] = React.useState([]);
   const [isLoading, setLoading] = useState(true);
   const [value, setValue] = React.useState("");
-  const [isChosen, setChosen] = React.useState(false);
+  const [selectedQuestions, setSelectedQuestions] = React.useState([]);
 
   const handleChange = (value) => {
     setValue(value);
   };
 
   useEffect(async () => {
-    setId(param);
-    await fetchQuestions(param);
+    // setId(param);
+    await fetchQuestions(id);
   }, []);
+
+  useEffect(() => {
+    if (value)
+      setSelectedQuestions([...new Set([...selectedQuestions, index])]);
+  }, [value]);
 
   const fetchQuestions = async (id) => {
     try {
@@ -74,29 +82,39 @@ function CauHoi({ route, navigation }) {
       setLoading(false);
     } catch (err) {
       console.log(err);
+      setLoading(false);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
     }
   };
+
+  if (isLoading) {
+    return (
+      <ActivityIndicator
+        style={styles.loading}
+        color={AppConstant.DEFAULT_APP_COLOR}
+      />
+    );
+  }
 
   return (
     <View style={styles.body}>
       <View style={styles.header}>
         <Clock />
         <Text style={styles.headerText}>
-          Câu số {index}/{questions.length}
+          Câu số {index + 1}/{questions.length}
         </Text>
         <TouchableHighlight style={styles.endBtn}>
-          {index === 25 ? (
+          {index === questions.length - 1 ? (
             <Text style={styles.endBtnText}>Kết thúc</Text>
           ) : (
-            <Text style={styles.endBtnText}>Câu sau</Text>
+            <Text style={styles.endBtnText} onPress={() => setIndex(index + 1)}>
+              Câu sau
+            </Text>
           )}
         </TouchableHighlight>
       </View>
 
-      <Text style={styles.question}>
-        Phần của đường bộ được sử dụng cho các phương tiện giao thông qua lại là
-        gì?
-      </Text>
+      <Text style={styles.question}>{questions[index]?.content}</Text>
 
       <View style={styles.answerView}>
         <RadioButton.Group
@@ -182,7 +200,12 @@ function CauHoi({ route, navigation }) {
         <TouchableOpacity
           style={styles.footerBtn}
           onPress={() => {
-            navigation.navigate("Chọn câu hỏi");
+            navigation.navigate("Chọn câu hỏi", {
+              current: index + 1,
+              total: questions.length,
+              setIndex,
+              selectedQuestions,
+            });
           }}
         >
           <View>
@@ -191,8 +214,7 @@ function CauHoi({ route, navigation }) {
               style={styles.footerImage}
             />
             <Text style={styles.footerText}>
-              Câu {index}
-              /25
+              Câu {index + 1}/{questions.length}
             </Text>
           </View>
         </TouchableOpacity>
@@ -219,6 +241,9 @@ const styles = {
   },
   headerText: {
     fontSize: 14,
+  },
+  loading: {
+    marginTop: 10,
   },
   endBtn: {
     background: "rgb(112 146 254)",

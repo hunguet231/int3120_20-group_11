@@ -13,7 +13,7 @@ type Set @model{
     chosen: Answer
     type: String!
     questions: [Question]  @hasMany(indexName: "bySet", fields: ["id"]) 
-    explain: String
+    
 }
 
 type Question @model{
@@ -23,6 +23,7 @@ type Question @model{
     image: String
     # set: Set!  @hasOne(fields: ["set_id"])
     answers: [Answer] @hasMany(indexName: "byQuestion", fields: ["id"])
+    explain: String!
 }
 
 type Answer @model{

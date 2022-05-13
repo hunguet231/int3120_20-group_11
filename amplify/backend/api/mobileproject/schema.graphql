@@ -12,7 +12,8 @@ type Set @model{
     total: Int!
     chosen: Answer
     type: String!
-    questions: [Question]  @hasMany(indexName: "bySet", fields: ["id"])
+    questions: [Question]  @hasMany(indexName: "bySet", fields: ["id"]) 
+    explain: String
 }
 
 type Question @model{
@@ -21,12 +22,12 @@ type Question @model{
     content: String!
     image: String
     # set: Set!  @hasOne(fields: ["set_id"])
-    answers: [Answer] 
+    answers: [Answer] @hasMany(indexName: "byQuestion", fields: ["id"])
 }
 
 type Answer @model{
     id: ID!
-    question_id: String!
+    question_id: ID! @index(name: "byQuestion", sortKeyFields: ["id"])
     content: String!
     is_true: Boolean!
 }

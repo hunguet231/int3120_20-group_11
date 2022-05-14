@@ -8,35 +8,57 @@ import {
   View,
   Alert,
   ActivityIndicator,
+  ScrollView,
+  Dimensions,
 } from "react-native";
 import { RadioButton, TouchableRipple } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AppConstant } from "../../constants";
 import Clock from "../shared/Clock";
 
+const win = Dimensions.get("window");
+
 function CauHoi({ route, navigation }) {
   // Lay id parameter da truyen vao tu truoc
   const { id } = route.params;
 
-  // const [id, setId] = React.useState(param);
   const [index, setIndex] = React.useState(0);
   const [questions, setQuestions] = React.useState([]);
   const [isLoading, setLoading] = useState(true);
   const [value, setValue] = React.useState("");
-  const [selectedQuestions, setSelectedQuestions] = React.useState([]);
+  const [selectedQuestions, setSelectedQuestions] = React.useState({});
 
   const handleChange = (value) => {
     setValue(value);
   };
 
+  const handleNextQuestion = () => {
+    setIndex(index + 1);
+  };
+
+  const getSelectedQuestionsFromStorage = async () => {
+    try {
+      const data = await AsyncStorage.getItem("@selected_questions_details");
+      if (data !== null) {
+        setSelectedQuestions(data);
+      }
+    } catch (e) {
+      console.log(e);
+      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
+    }
+  };
+
   useEffect(async () => {
-    // setId(param);
     await fetchQuestions(id);
+    // getSelectedQuestionsFromStorage();
   }, []);
 
   useEffect(() => {
-    if (value)
-      setSelectedQuestions([...new Set([...selectedQuestions, index])]);
+    if (value) {
+      setSelectedQuestions({ ...selectedQuestions, [index]: value });
+
+      // AsyncStorage.setItem("@selected_questions_details", {...selectedQuestions});
+    }
   }, [value]);
 
   const fetchQuestions = async (id) => {
@@ -65,6 +87,18 @@ function CauHoi({ route, navigation }) {
                         set_id
                         content
                         image
+                        answers {
+                          items {
+                            id
+                            question_id
+                            content
+                            is_true
+                            createdAt
+                            updatedAt
+                          }
+                          nextToken
+                        }
+                        explain
                         createdAt
                         updatedAt
                       }
@@ -76,6 +110,7 @@ function CauHoi({ route, navigation }) {
                 }`,
         authMode: "API_KEY",
       });
+
       const res = data.getSet.questions.items;
       setQuestions(res);
       console.log(res);
@@ -83,7 +118,7 @@ function CauHoi({ route, navigation }) {
     } catch (err) {
       console.log(err);
       setLoading(false);
-      Alert.alert("Oops!", "Có lỗi xảy ra!");
+      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
     }
   };
 
@@ -107,94 +142,65 @@ function CauHoi({ route, navigation }) {
           {index === questions.length - 1 ? (
             <Text style={styles.endBtnText}>Kết thúc</Text>
           ) : (
-            <Text style={styles.endBtnText} onPress={() => setIndex(index + 1)}>
+            <Text style={styles.endBtnText} onPress={handleNextQuestion}>
               Câu sau
             </Text>
           )}
         </TouchableHighlight>
       </View>
 
-      <Text style={styles.question}>{questions[index]?.content}</Text>
+      <ScrollView>
+        <Text style={styles.question}>{questions[index]?.content}</Text>
 
-      <View style={styles.answerView}>
-        <RadioButton.Group
-          style={styles.radioGroup}
-          onValueChange={(newValue) => setValue(newValue)}
-          value={value}
-        >
-          <TouchableRipple
-            rippleColor="rgba(0, 0, 0, .32)"
-            onPress={() => handleChange("first")}
-          >
-            <View style={styles.answer}>
-              <View style={styles.answerTextContainer}>
-                <Text style={styles.answerIndex}>1</Text>
-                <Text
-                  style={
-                    value.includes("first")
-                      ? styles.answerTextCheck
-                      : styles.answerText
-                  }
-                >
-                  Phần mặt đường và lề đường. Phần mặt đường và lề đường.Phần
-                  mặt đường và lề đường.
-                </Text>
-              </View>
-              <RadioButton
-                color={AppConstant.DEFAULT_APP_COLOR}
-                value="first"
-                style={styles.radio}
-              />
-            </View>
-          </TouchableRipple>
+        {questions[index]?.image ? (
+          <Image
+            source={{ uri: questions[index].image }}
+            style={styles.questionImage}
+            resizeMode={"contain"}
+          />
+        ) : (
+          <Text></Text>
+        )}
 
-          <TouchableRipple
-            rippleColor="rgba(0, 0, 0, .32)"
-            onPress={() => handleChange("second")}
+        <View style={styles.answerView}>
+          <RadioButton.Group
+            style={styles.radioGroup}
+            onValueChange={(newValue) => setValue(newValue)}
+            value={selectedQuestions[index] || value}
           >
-            <View style={styles.answer}>
-              <Text style={styles.answerIndex}>2</Text>
-              <Text
-                style={
-                  value.includes("second")
-                    ? styles.answerTextCheck
-                    : styles.answerText
-                }
+            {questions[index]?.answers?.items.map((answer, indexQuestion) => (
+              <TouchableRipple
+                key={answer.id}
+                rippleColor="rgba(0, 0, 0, .32)"
+                onPress={() => handleChange(`answer${answer.id}`)}
               >
-                Phần đường xe chạy.
-              </Text>
-              <RadioButton
-                color={AppConstant.DEFAULT_APP_COLOR}
-                value="second"
-                style={styles.radio}
-              />
-            </View>
-          </TouchableRipple>
-
-          <TouchableRipple
-            rippleColor="rgba(0, 0, 0, .32)"
-            onPress={() => handleChange("third")}
-          >
-            <View style={styles.answer}>
-              <Text style={styles.answerIndex}>3</Text>
-              <Text
-                style={
-                  value.includes("third")
-                    ? styles.answerTextCheck
-                    : styles.answerText
-                }
-              >
-                Phần đường xe cơ giới.
-              </Text>
-              <RadioButton
-                color={AppConstant.DEFAULT_APP_COLOR}
-                value="third"
-                style={styles.radio}
-              />
-            </View>
-          </TouchableRipple>
-        </RadioButton.Group>
-      </View>
+                <View style={styles.answer}>
+                  <View style={styles.answerTextContainer}>
+                    <View style={styles.answerIndex}>
+                      <Text>{indexQuestion + 1}</Text>
+                    </View>
+                    <Text
+                      style={
+                        selectedQuestions[index] === `answer${answer.id}` ||
+                        value === `answer${answer.id}`
+                          ? styles.answerTextCheck
+                          : styles.answerText
+                      }
+                    >
+                      {answer.content}
+                    </Text>
+                  </View>
+                  <RadioButton
+                    color={AppConstant.DEFAULT_APP_COLOR}
+                    value={`answer${answer.id}`}
+                    style={styles.radio}
+                  />
+                </View>
+              </TouchableRipple>
+            ))}
+          </RadioButton.Group>
+        </View>
+      </ScrollView>
 
       <View style={styles.footer}>
         <TouchableOpacity
@@ -246,7 +252,7 @@ const styles = {
     marginTop: 10,
   },
   endBtn: {
-    background: "rgb(112 146 254)",
+    backgroundColor: "rgb(112, 146, 254)",
     borderRadius: 6,
     paddingLeft: 8,
     paddingRight: 8,
@@ -257,7 +263,7 @@ const styles = {
     color: "#fff",
   },
   endBtnHighLight: {
-    backgroundColor: "rgb(112 146 254)",
+    backgroundColor: "rgb(112, 146, 254)",
   },
   question: {
     fontSize: 14,
@@ -283,7 +289,9 @@ const styles = {
     height: 20,
     width: 20,
     backgroundColor: "#E4E4E4",
-    textAlign: "center",
+    diplay: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     borderRadius: 50,
   },
   answerTextContainer: {
@@ -330,6 +338,16 @@ const styles = {
     height: 10,
     width: 15,
     alignItems: "center",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: 5,
+    marginBottom: 8,
+  },
+  questionImage: {
+    flex: 1,
+    alignSelf: "stretch",
+    width: win.width,
+    height: 200,
     marginLeft: "auto",
     marginRight: "auto",
     marginTop: 5,

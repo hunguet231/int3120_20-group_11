@@ -29,7 +29,7 @@ function SatHach({ navigation }) {
       } else return "A1";
     } catch (e) {
       console.log(e);
-      Alert.alert("Oops!", "Có lỗi xảy ra!");
+      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
     }
   };
 
@@ -56,7 +56,7 @@ function SatHach({ navigation }) {
     } catch (err) {
       console.log(err);
       setLoading(false);
-      Alert.alert("Oops!", "Có lỗi xảy ra!");
+      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
     }
   };
 

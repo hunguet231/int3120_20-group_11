@@ -17,13 +17,11 @@ const ThucHanh = () => {
                 năng lái xe thì hãy cố gắng chỉ bị trừ điểm chứ không loại trực
                 tiếp. Một số lỗi khiến bạn “thi trượt” ngay lập tức gồm:
               </Text>
-              <View>
-                <Text>
-                  +Lỗi đi ngược vòng số 8 hoặc ra khỏi vòng số 8 quá sớm
-                </Text>
-                <Text>+2 bánh xe chệch ra hoàn toàn khỏi vòng số 8</Text>
-                <Text>+Ngã xe, đổ xe, chết máy</Text>
-              </View>
+              <Text>
+                +Lỗi đi ngược vòng số 8 hoặc ra khỏi vòng số 8 quá sớm
+              </Text>
+              <Text>+2 bánh xe chệch ra hoàn toàn khỏi vòng số 8</Text>
+              <Text>+Ngã xe, đổ xe, chết máy</Text>
             </View>
           </View>
         </View>

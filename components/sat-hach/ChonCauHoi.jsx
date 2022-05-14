@@ -10,14 +10,14 @@ function ChonCauHoi({ route, navigation }) {
 
   for (let i = 0; i < total; i++) {
     defaultColor = "#E4E4E4";
-    if (selectedQuestions.includes(i)) defaultColor = "#7092FE";
+    if (selectedQuestions.hasOwnProperty(i)) defaultColor = "#7092FE";
     questionIndexs.push(
       <View
         key={i}
         style={[styles.questionBox, { backgroundColor: defaultColor }]}
       >
         <Text
-          style={styles.index}
+          // style={styles.index}
           onPress={() => {
             setIndex(i);
             navigation.goBack();
@@ -101,18 +101,12 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 50,
+    display: "flex",
+    justifyContent: "center",
     alignItems: "center",
     marginTop: 5,
     marginBottom: 5,
     marginLeft: 5,
-    cursor: "pointer",
-  },
-  index: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
   },
 });
 

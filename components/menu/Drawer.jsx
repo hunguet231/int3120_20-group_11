@@ -23,11 +23,11 @@ const Drawer = ({ navigation }) => {
         },
         headerTintColor: "#fff",
       }}
-      initialRouteName="Trang chủ"
+      initialRouteName="Home"
       drawerContent={(props) => <Menu {...props} />}
     >
       <Drawer.Screen
-        name="Trang chủ"
+        name="Home"
         component={Dashboad}
         options={{
           title: "Trang chủ",

@@ -107,7 +107,7 @@ export const MeoLyThuyet = [
           "Đường giao nhau có vòng xuyến nhường bên trái, không có vòng xuyến nhường bên phải.",
       },
       {
-        content: "Thấy xuất hiện “Công an” chọn câu cố 3.",
+        content: "Thấy xuất hiện “Công an” chọn câu số 3.",
       },
       {
         content:

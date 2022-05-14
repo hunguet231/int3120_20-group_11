@@ -5,13 +5,13 @@ import { Image, Text, View } from "react-native";
 const Clock = () => {
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
-      return <span>Hết giờ</span>;
+      return <Text>Hết giờ</Text>;
     } else {
       return (
-        <span>
+        <Text>
           {`${minutes < 10 ? `0${minutes}` : minutes}`}:
           {`${seconds < 10 ? `0${seconds}` : seconds}`}
-        </span>
+        </Text>
       );
     }
   };

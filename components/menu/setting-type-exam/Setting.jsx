@@ -31,7 +31,7 @@ const Setting = ({ navigation }) => {
   const handleSaveType = async () => {
     try {
       await AsyncStorage.setItem("@type_exam", value);
-      navigation.navigate("Trang chủ");
+      navigation.navigate("Home");
     } catch (e) {
       console.log(e);
       Alert.alert("Oops!", "Có lỗi xảy ra!");

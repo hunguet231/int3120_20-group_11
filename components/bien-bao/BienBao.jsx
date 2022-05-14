@@ -1,9 +1,9 @@
 import React from "react";
 import { TabView, SceneMap } from "react-native-tab-view";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 const BienBao = () => {
-  return <div>BienBao</div>;
+  return <Text>BienBao</Text>;
 };
 
 const styles = StyleSheet.create({

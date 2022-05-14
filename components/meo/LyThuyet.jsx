@@ -6,16 +6,15 @@ import Record from "./Record";
 const LyThuyet = () => {
   return (
     <ScrollView>
-      {MeoLyThuyet.map((set) => (
-        <Record title={set.title}>
+      {MeoLyThuyet.map((set, index) => (
+        <Record title={set.title} key={index}>
           {set.data.map((item, index) => (
-            <View key={index}>
-              <Text
-                style={[styles.item, index % 2 == 0 ? styles.even : styles.odd]}
-              >
-                {item.content}
-              </Text>
-            </View>
+            <Text
+              key={index}
+              style={[styles.item, index % 2 == 0 ? styles.even : styles.odd]}
+            >
+              {item.content}
+            </Text>
           ))}
         </Record>
       ))}

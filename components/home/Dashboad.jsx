@@ -1,7 +1,9 @@
 import * as React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, Dimensions } from "react-native";
 import { options } from "../../utils/options";
 import OptionBox from "./OptionBox";
+
+const screenHeight = Dimensions.get("window").height;
 
 const Dashboad = ({ navigation }) => {
   return (
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
     paddingRight: 15,
     paddingTop: 20,
     backgroundColor: "#fff",
-    height: "calc(100vh - 64px)",
+    height: screenHeight - 64,
     flexDirection: "row",
     flexWrap: "wrap",
   },

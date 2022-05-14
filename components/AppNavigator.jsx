@@ -13,9 +13,9 @@ const { Navigator, Screen } = createStackNavigator();
 
 function AppNavigator() {
   return (
-    <Navigator initialRouteName="TrangChu">
+    <Navigator initialRouteName="Trang chủ">
       <Screen
-        name="TrangChu"
+        name="Trang chủ"
         component={Drawer}
         options={{
           headerShown: false,

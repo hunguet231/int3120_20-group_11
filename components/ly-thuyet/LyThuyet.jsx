@@ -10,9 +10,12 @@ import {
   View,
   Alert,
   Image,
+  Dimensions,
 } from "react-native";
 import { AppConstant } from "../../constants";
 import { listSets } from "../../src/graphql/queries";
+
+const screenHeight = Dimensions.get("window").height;
 
 function LyThuyet({ navigation }) {
   const [sets, setSets] = useState([]);
@@ -37,7 +40,7 @@ function LyThuyet({ navigation }) {
     } catch (err) {
       console.log(err);
       setLoading(false);
-      Alert.alert("Oops!", "Có lỗi xảy ra!");
+      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
     }
   };
 
@@ -100,7 +103,7 @@ function LyThuyet({ navigation }) {
 
 const styles = StyleSheet.create({
   main: {
-    minHeight: "calc(100vh - 64px)",
+    minHeight: screenHeight - 64,
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 10,

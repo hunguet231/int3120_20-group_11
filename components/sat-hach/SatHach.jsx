@@ -20,6 +20,7 @@ const content =
 function SatHach({ navigation }) {
   const [sets, setSets] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [type, setType] = useState("");
 
   const getTypeExamFromStorage = async () => {
     try {
@@ -35,6 +36,7 @@ function SatHach({ navigation }) {
 
   useEffect(async () => {
     const type = await getTypeExamFromStorage();
+    setType(type);
     await fetchSets(type);
   }, []);
 
@@ -85,7 +87,7 @@ function SatHach({ navigation }) {
                   key={set.id}
                   style={styles.button}
                   onPress={() => {
-                    navigation.navigate("Câu hỏi", { id: set.id });
+                    navigation.navigate("Câu hỏi", { id: set.id, type });
                   }}
                 >
                   <View>
@@ -124,6 +126,7 @@ function SatHach({ navigation }) {
                     onPress={() => {
                       navigation.navigate("Câu hỏi", {
                         id: sets[Math.floor(Math.random() * sets.length)].id,
+                        type,
                       });
                     }}
                   >

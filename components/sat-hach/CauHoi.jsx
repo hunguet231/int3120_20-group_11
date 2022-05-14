@@ -20,13 +20,15 @@ const win = Dimensions.get("window");
 
 function CauHoi({ route, navigation }) {
   // Lay id parameter da truyen vao tu truoc
-  const { id } = route.params;
+  const { id, type } = route.params;
 
   const [index, setIndex] = React.useState(0);
   const [questions, setQuestions] = React.useState([]);
   const [isLoading, setLoading] = useState(true);
   const [value, setValue] = React.useState("");
   const [selectedQuestions, setSelectedQuestions] = React.useState({});
+  const [selectedQuestionsDetails, setSelectedQuestionsDetails] =
+    React.useState({});
 
   const handleChange = (value) => {
     setValue(value);
@@ -38,10 +40,25 @@ function CauHoi({ route, navigation }) {
 
   const getSelectedQuestionsFromStorage = async () => {
     try {
-      const data = await AsyncStorage.getItem("@selected_questions_details");
-      if (data !== null) {
-        setSelectedQuestions(data);
-      }
+      const data =
+        JSON.parse(await AsyncStorage.getItem("@selected_questions_details")) ||
+        {};
+      setSelectedQuestionsDetails(data);
+      setSelectedQuestions(data[type]?.[`set${id}`] || {});
+    } catch (e) {
+      console.log(e);
+      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
+    }
+  };
+
+  const saveSelectedQuestionsToStorage = async (newData) => {
+    try {
+      selectedQuestionsDetails[type] = selectedQuestionsDetails[type] || {};
+      selectedQuestionsDetails[type][`set${id}`] = newData;
+      await AsyncStorage.setItem(
+        "@selected_questions_details",
+        JSON.stringify(selectedQuestionsDetails)
+      );
     } catch (e) {
       console.log(e);
       Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
@@ -50,14 +67,14 @@ function CauHoi({ route, navigation }) {
 
   useEffect(async () => {
     await fetchQuestions(id);
-    // getSelectedQuestionsFromStorage();
+    await getSelectedQuestionsFromStorage();
   }, []);
 
   useEffect(() => {
     if (value) {
-      setSelectedQuestions({ ...selectedQuestions, [index]: value });
-
-      // AsyncStorage.setItem("@selected_questions_details", {...selectedQuestions});
+      const newData = { ...selectedQuestions, [index]: value };
+      saveSelectedQuestionsToStorage(newData);
+      setSelectedQuestions(newData);
     }
   }, [value]);
 

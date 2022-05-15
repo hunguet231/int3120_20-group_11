@@ -17,7 +17,7 @@
 
 - Node.js LTS
 - Visual Studio Code
-- Expo App (optional)
+- Expo App
 
 ## Cách chạy:
 
@@ -27,22 +27,28 @@
 $ npm install
 ```
 
-2. Run project
+2. Pull backend
+
+```sh
+$ amplify pull --appId d15pniii3p3vew --envName dev
+```
+
+Sau đó dùng thông tin được cung cấp trong file credentials.csv để thực hiện pull backend.
+
+3. Run project
 
 ```sh
 $ npm start
 ```
 
-### Cách pull backend
+## Tài nguyên liên quan
 
-1. Đăng nhập vào bảng điều khiển AWS bằng cách copy đường link ở phần console login link, sau đó sử dụng tài khoản, mật khẩu được cung cấp trong file csv để đăng nhập.
-2. Chỉnh region về "US West (Oregon) us-west-2".
-3. Sau khi đăng nhập thành công, vào thanh tìm kiếm, tìm kiếm Amplify.
-4. Chọn MobileProject
-5. Chọn Backend environments, kéo xuống chọn Edit backend.
-6. Copy đường link để pull back end về, sau đó paste vào terminal nơi chứa thư mục gốc project và thực hiện pull backend.
+- [Figma](https://www.figma.com/file/TxWnP2yaxnD2jMtikjW4d6/%C3%94n-thi-GPLX?node-id=0%3A1)
 
+- [Slides](https://docs.google.com/presentation/d/1dkElcgE0UuBR7HANvb15G4xumf5GkyghXSF5m7lw-Hk/edit?usp=sharing)
 
-# Test
-Test link: ./test/TestProject/Test
-Test result for testProject Test :./test/TestProject/Test result
+## Test
+
+- [Test link](https://github.com/hunguet231/int3120_20-group_11/tree/main/test/TestProject/Test)
+
+- [Test result](https://github.com/hunguet231/int3120_20-group_11/tree/main/test/TestProject/Test%20result)

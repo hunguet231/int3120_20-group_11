@@ -15,20 +15,22 @@ import { RadioButton, TouchableRipple } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AppConstant } from "../../constants";
 import Clock from "../shared/Clock";
+import ChonCauHoiV2 from "./ChonCauHoiV2";
 
 const win = Dimensions.get("window");
 
 function CauHoi({ route, navigation }) {
-  // Lay id parameter da truyen vao tu truoc
   const { id, type } = route.params;
 
-  const [index, setIndex] = React.useState(0);
-  const [questions, setQuestions] = React.useState([]);
+  // route.name = `Đề số ${id}`;
+
+  const [index, setIndex] = useState(0);
+  const [questions, setQuestions] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [value, setValue] = React.useState("");
-  const [selectedQuestions, setSelectedQuestions] = React.useState({});
-  const [selectedQuestionsDetails, setSelectedQuestionsDetails] =
-    React.useState({});
+  const [showResult, setShowResult] = useState(false);
+  const [value, setValue] = useState("");
+  const [selectedQuestions, setSelectedQuestions] = useState({});
+  const [selectedQuestionsDetails, setSelectedQuestionsDetails] = useState({});
 
   const handleChange = (value) => {
     setValue(value);
@@ -36,6 +38,19 @@ function CauHoi({ route, navigation }) {
 
   const handleNextQuestion = () => {
     setIndex(index + 1);
+  };
+
+  const handleEnd = () => {
+    // Alert.alert("Kết thúc", "Xác nhận kết thúc bài thi?", [
+    //   {
+    //     text: "Xác nhận",
+    //     onPress: () => {
+    //       // todo
+    //     },
+    //     style: "cancel",
+    //   },
+    // ]);
+    // navigation.navigate("Kết quả", { correct: 25, total: questions.length });
   };
 
   const getSelectedQuestionsFromStorage = async () => {
@@ -139,6 +154,17 @@ function CauHoi({ route, navigation }) {
     }
   };
 
+  const styleAnswerText = (answer) => {
+    if (showResult) {
+      if (selectedQuestions[index] === `answer${answer.id}`) {
+        return styles.answerCorrect;
+      } else {
+        return styles.answerInCorrect;
+      }
+    }
+    return styles.answerText;
+  };
+
   if (isLoading) {
     return (
       <ActivityIndicator
@@ -157,7 +183,9 @@ function CauHoi({ route, navigation }) {
         </Text>
         <TouchableHighlight style={styles.endBtn}>
           {index === questions.length - 1 ? (
-            <Text style={styles.endBtnText}>Kết thúc</Text>
+            <Text style={styles.endBtnText} onPress={handleEnd}>
+              Kết thúc
+            </Text>
           ) : (
             <Text style={styles.endBtnText} onPress={handleNextQuestion}>
               Câu sau
@@ -196,14 +224,7 @@ function CauHoi({ route, navigation }) {
                     <View style={styles.answerIndex}>
                       <Text>{indexQuestion + 1}</Text>
                     </View>
-                    <Text
-                      style={
-                        selectedQuestions[index] === `answer${answer.id}` ||
-                        value === `answer${answer.id}`
-                          ? styles.answerTextCheck
-                          : styles.answerText
-                      }
-                    >
+                    <Text style={styleAnswerText(answer)}>
                       {answer.content}
                     </Text>
                   </View>
@@ -242,6 +263,7 @@ function CauHoi({ route, navigation }) {
           </View>
         </TouchableOpacity>
       </View>
+      {/* <ChonCauHoiV2 /> */}
     </View>
   );
 }
@@ -325,11 +347,19 @@ const styles = {
     marginLeft: 8,
     flex: 1,
   },
-  answerTextCheck: {
+  answerCorrect: {
     fontSize: 14,
     lineHeight: 18,
     alignItems: "center",
     color: "#099D18",
+    marginLeft: 8,
+    flex: 1,
+  },
+  answerInCorrect: {
+    fontSize: 14,
+    lineHeight: 18,
+    alignItems: "center",
+    color: "red",
     marginLeft: 8,
     flex: 1,
   },

@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     transform: [{ translateX: 12 }, { translateY: 12 }],
     color: "rgb(0, 0, 0)",
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "400",
     lineHeight: 24,
     letterSpacing: 0,
@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   footerBtn: {
-    backgroundColor: "#1890FF",
+    backgroundColor: AppConstant.DEFAULT_APP_COLOR,
     width: 280,
     height: 40,
     borderRadius: 10,

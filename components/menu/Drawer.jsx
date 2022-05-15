@@ -20,8 +20,10 @@ const Drawer = ({ navigation }) => {
         },
         headerTitleStyle: {
           color: "#fff",
+          fontSize: 15,
         },
         headerTintColor: "#fff",
+        headerTitleAlign: "center",
       }}
       initialRouteName="Home"
       drawerContent={(props) => <Menu {...props} />}
@@ -30,7 +32,8 @@ const Drawer = ({ navigation }) => {
         name="Home"
         component={Dashboad}
         options={{
-          title: "Trang chủ",
+          headerTitle: "Ôn thi GPLX máy",
+          drawerLabel: "Trang chủ",
           drawerIcon: ({ focused, size }) => (
             <Ionicons
               name="ios-home"

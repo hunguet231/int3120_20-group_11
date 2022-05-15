@@ -9,6 +9,7 @@ import SatHach from "./sat-hach/SatHach";
 import BienBao from "./bien-bao/BienBao";
 import Meo from "./meo/Meo";
 import CauSai from "./cac-cau-sai/CauSai";
+import Result from "./Result";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -33,6 +34,7 @@ function AppNavigator() {
         component={ChonCauHoi}
         options={(options, { headerShown: false })}
       />
+      <Screen name="Kết quả" component={Result} options={options} />
     </Navigator>
   );
 }
@@ -43,6 +45,7 @@ const options = {
   },
   headerTitleStyle: {
     color: "#fff",
+    fontSize: 15,
   },
   headerTintColor: "#fff",
   headerTitleAlign: "center",

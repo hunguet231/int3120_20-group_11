@@ -1,0 +1,171 @@
+id: -hrbvqZoHUeRdEEwZE5ffA
+projectId: T61PNn50gU-1dRFplT31vg
+projectName: GPLX
+created: 2022-05-15T13:44:43.6181211Z
+owner: Huy Truong Gia
+protocol: 1
+tests:
+- id: GjdiJnpFnUid48FjYFGvCw
+  name: Màn hình Biển báo đường bộ
+  description: ''
+  platform: Web
+  type: Web
+  driverType: Chrome
+  version: 0.1
+  creationDate: 2022-05-15T13:42:17.0000000
+  modificationDate: 2022-05-15T13:43:27.0000000
+  settings:
+    automationAssistant: true
+    appId: 4PTvEkhOKEOmW3qyhnhlGQ
+    stepSleepTime: 500
+    stepTimeout: 15000
+    stepSleepTiming: Before
+    stepFailureBehaviorType: Abort
+    stepTakeScreenshotConditionType: Failure
+  application:
+    id: 4PTvEkhOKEOmW3qyhnhlGQ
+    name: GPLX
+    url: http://localhost:19006/
+    platform: Web
+  steps:
+  - id: 1DQcF0d8g0yFmUBW6pb12A
+    comments: Navigates the specified URL (Auto-generated)
+    enabled: true
+    invertResult: false
+    order: 1
+    repeat: 1
+    type: Action
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 49c5d8d8-4ba8-42f0-823d-702e6acfb23a
+      source: System
+    parameterMaps:
+    - name: url
+      value: '{{ApplicationURL}}'
+      direction: Input
+    conditions: []
+    validations: []
+    contexts: []
+  - id: UhXwznuBHUq57dxDzT6o3w
+    enabled: true
+    invertResult: false
+    order: 2
+    repeat: 1
+    type: Action
+    elementId: WqWmEMNaZEG6W0jr2uOusA
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: yagh3PJAZ0aYFRcEdwybAQ
+    comments: ''
+    enabled: true
+    invertResult: false
+    order: 3
+    repeat: 1
+    type: Action
+    elementId: xXaNaCJTrUmYVqFBpbVtdg
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 85da72d0-c5a4-4587-be33-8cb3b5fa7910
+      source: System
+    parameterMaps:
+    - name: text
+      value: Biển báo đường bộ
+      direction: Input
+    conditions: []
+    validations: []
+    contexts: []
+  - id: Ei3VAUzYTUGnwSCSHdhQaQ
+    enabled: true
+    invertResult: false
+    order: 4
+    repeat: 1
+    type: Action
+    elementId: d2-K4gt_rkCfiPxPj-7QYg
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  parameters:
+  - name: ApplicationURL
+    description: Auto generated application URL parameter
+    value: http://localhost:19006/
+    type: Input
+auxTests: []
+elements:
+- id: d2-K4gt_rkCfiPxPj-7QYg
+  name: IMG2
+  type:
+    id: jUwODgyNjAyNzk2NTk1NTI
+    name: Image
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[2]/div/div[2]/div[2]//img
+    priority: 0
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/div/div/div[2]/div/div[2]/div[2]/div[1]/div/div/img
+    priority: 1
+- id: WqWmEMNaZEG6W0jr2uOusA
+  name: Biển báo đường bộ
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[2]/div[. = 'Biển báo đường bộ']
+    priority: 0
+  - name: XPATH
+    value: //div[3]/div[2]/div
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div/div[2]/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div/div/div[1]/div/div/div/div[3]/div[2]/div
+    priority: 2
+- id: xXaNaCJTrUmYVqFBpbVtdg
+  name: Biển báo đường bộ1
+  type:
+    id: jUwODgyNjAyNzk2NTk1NTA
+    name: Heading
+    source: System
+  locators:
+  - name: XPATH
+    value: //h1[. = 'Biển báo đường bộ']
+    priority: 0
+  - name: XPATH
+    value: //div[2]/div/div[2]/div[2]/div/h1
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/div/div/div[2]/div/div[2]/div[2]/div[2]/h1
+    priority: 2
+projectParameters: []
+addons: []

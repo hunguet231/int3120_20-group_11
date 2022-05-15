@@ -1,0 +1,351 @@
+id: Srq0TpgjtEeEvED3oqVkOg
+projectId: T61PNn50gU-1dRFplT31vg
+projectName: GPLX
+created: 2022-05-15T13:35:22.1638780Z
+owner: Huy Truong Gia
+protocol: 1
+tests:
+- id: zmXTlsWSWku-lNAWFb0RqA
+  name: Thi sát hạch
+  description: ''
+  platform: Web
+  type: Web
+  driverType: Chrome
+  version: 0.1
+  creationDate: 2022-05-15T09:48:24.0000000
+  modificationDate: 2022-05-15T09:53:09.0000000
+  settings:
+    automationAssistant: true
+    appId: 4PTvEkhOKEOmW3qyhnhlGQ
+    stepSleepTime: 500
+    stepTimeout: 15000
+    stepSleepTiming: Before
+    stepFailureBehaviorType: Abort
+    stepTakeScreenshotConditionType: Failure
+  application:
+    id: 4PTvEkhOKEOmW3qyhnhlGQ
+    name: GPLX
+    url: http://localhost:19006/
+    platform: Web
+  steps:
+  - id: W7XEsat840u04q5qWgFsRw
+    comments: Navigates the specified URL (Auto-generated)
+    enabled: true
+    invertResult: false
+    order: 1
+    repeat: 1
+    type: Action
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 49c5d8d8-4ba8-42f0-823d-702e6acfb23a
+      source: System
+    parameterMaps:
+    - name: url
+      value: '{{ApplicationURL}}'
+      direction: Input
+    conditions: []
+    validations: []
+    contexts: []
+  - id: xAvmgUkQEkGOR4KgAq5YBg
+    enabled: true
+    invertResult: false
+    order: 2
+    repeat: 1
+    type: Action
+    elementId: LSErJY2ZaECub0fe2VP0XA
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: pQGBAJYB-Euv0jj9crOrfw
+    enabled: true
+    invertResult: false
+    order: 3
+    repeat: 1
+    type: Action
+    elementId: rj3fB4fLIkSEyRzOjsnJyA
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: 45rO1m9eYUyF65sGmHSkHA
+    enabled: true
+    invertResult: false
+    order: 4
+    repeat: 1
+    type: Action
+    elementId: IiGv1AZ0qEOAsqLh_2Jf5w
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: moToPYcU9U-QstaE9YPiBw
+    enabled: true
+    invertResult: false
+    order: 5
+    repeat: 1
+    type: Action
+    elementId: 62LUrHIVE0GsweMlgYuxQw
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: waL5LPSSl0G2S6UIaYlsNg
+    enabled: true
+    invertResult: false
+    order: 6
+    repeat: 1
+    type: Action
+    elementId: ESF_w3nWk0Orgh0st1WUTQ
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: 7netxFXDqEOW7nUfpVIJKg
+    enabled: true
+    invertResult: false
+    order: 7
+    repeat: 1
+    type: Action
+    elementId: 62LUrHIVE0GsweMlgYuxQw
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: zHxzK3DWH0SRd4XnyQjseQ
+    enabled: true
+    invertResult: false
+    order: 8
+    repeat: 1
+    type: Action
+    elementId: E5IQFSTXaEmmJW90_fof_Q
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: hS8RwunHNESbAqG5BustFg
+    enabled: true
+    invertResult: false
+    order: 9
+    repeat: 1
+    type: Action
+    elementId: 62LUrHIVE0GsweMlgYuxQw
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: catFhKEuGkOrS0qd86ebrQ
+    enabled: true
+    invertResult: false
+    order: 10
+    repeat: 1
+    type: Action
+    elementId: rILw8wDvgkWbKxVx_hfjYQ
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  parameters:
+  - name: ApplicationURL
+    description: Auto generated application URL parameter
+    value: http://localhost:19006/
+    type: Input
+auxTests: []
+elements:
+- id: LSErJY2ZaECub0fe2VP0XA
+  name: Thi sát hạch
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[2]/div[. = 'Thi sát hạch']
+    priority: 0
+  - name: XPATH
+    value: //div[2]/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div/div[2]/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div
+    priority: 2
+- id: rj3fB4fLIkSEyRzOjsnJyA
+  name: DIV
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div/div[1]/div[1]
+    priority: 0
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div/div[1]/div[1]
+    priority: 1
+- id: IiGv1AZ0qEOAsqLh_2Jf5w
+  name: Phần mặt đường và lề đường.
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[. = 'Phần mặt đường và lề đường.']
+    priority: 0
+  - name: XPATH
+    value: //div[3]/div/div[1]/div/div/div[2]
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div[3]/div/div[1]/div/div[1]/div[2]
+    priority: 2
+- id: 62LUrHIVE0GsweMlgYuxQw
+  name: Câu sau
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[3]/div[. = 'Câu sau']
+    priority: 0
+  - name: XPATH
+    value: //div[2]/div[2]/div/div/div/div[1]/div/div[1]/div[3]/div
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div[1]/div[3]/div
+    priority: 2
+- id: ESF_w3nWk0Orgh0st1WUTQ
+  name: Cả ý 1 và ý 2.
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[. = 'Cả ý 1 và ý 2.']
+    priority: 0
+  - name: XPATH
+    value: //div[3]/div/div[3]/div/div/div[2]
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div[3]/div/div[3]/div/div[1]/div[2]
+    priority: 2
+- id: E5IQFSTXaEmmJW90_fof_Q
+  name: Tăng ga mạnh để gây sự chú ý rồi cho ...
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[. = 'Tăng ga mạnh để gây sự chú ý rồi cho xe vượt qua.']
+    priority: 0
+  - name: XPATH
+    value: //div[3]/div/div[2]/div/div/div[2]
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div[3]/div/div[2]/div/div[1]/div[2]
+    priority: 2
+- id: rILw8wDvgkWbKxVx_hfjYQ
+  name: Nhả hết tay ga, tắt động cơ, sử dụng ...
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[. = 'Nhả hết tay ga, tắt động cơ, sử dụng phanh trước và phanh sau để giảm tốc độ.']
+    priority: 0
+  - name: XPATH
+    value: //div[3]/div/div[2]/div/div/div[2]
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div[3]/div/div[2]/div/div[1]/div[2]
+    priority: 2
+projectParameters: []
+addons: []

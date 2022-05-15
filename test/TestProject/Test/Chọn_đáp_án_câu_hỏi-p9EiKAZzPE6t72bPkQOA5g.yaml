@@ -1,0 +1,242 @@
+id: 5Ps4-2vTZUSnquBoUeIDGA
+projectId: T61PNn50gU-1dRFplT31vg
+projectName: GPLX
+created: 2022-05-15T14:02:11.0279614Z
+owner: Huy Truong Gia
+protocol: 1
+tests:
+- id: p9EiKAZzPE6t72bPkQOA5g
+  name: Chọn đáp án câu hỏi
+  description: ''
+  platform: Web
+  type: Web
+  driverType: Chrome
+  version: 0.1
+  creationDate: 2022-05-15T14:01:20.0000000
+  modificationDate: 2022-05-15T14:01:49.0000000
+  settings:
+    automationAssistant: true
+    appId: 4PTvEkhOKEOmW3qyhnhlGQ
+    stepSleepTime: 500
+    stepTimeout: 15000
+    stepSleepTiming: Before
+    stepFailureBehaviorType: Abort
+    stepTakeScreenshotConditionType: Failure
+  application:
+    id: 4PTvEkhOKEOmW3qyhnhlGQ
+    name: GPLX
+    url: http://localhost:19006/
+    platform: Web
+  steps:
+  - id: gT_XlD_lNUCD_6yHG1kuig
+    comments: Navigates the specified URL (Auto-generated)
+    enabled: true
+    invertResult: false
+    order: 1
+    repeat: 1
+    type: Action
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 49c5d8d8-4ba8-42f0-823d-702e6acfb23a
+      source: System
+    parameterMaps:
+    - name: url
+      value: '{{ApplicationURL}}'
+      direction: Input
+    conditions: []
+    validations: []
+    contexts: []
+  - id: BVRZQXBZ10GESBgCd8A5kQ
+    enabled: true
+    invertResult: false
+    order: 2
+    repeat: 1
+    type: Action
+    elementId: LSErJY2ZaECub0fe2VP0XA
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: tDxCB8EbzUiScPAzcOQXfQ
+    enabled: true
+    invertResult: false
+    order: 3
+    repeat: 1
+    type: Action
+    elementId: ioC85Spog0Ccpvj-fb-owQ
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: agXHrDxLp0OlSBwudtml-A
+    enabled: true
+    invertResult: false
+    order: 4
+    repeat: 1
+    type: Action
+    elementId: IiGv1AZ0qEOAsqLh_2Jf5w
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: 5Qs6EaKbMkOqqUdM1mGuUA
+    enabled: true
+    invertResult: false
+    order: 5
+    repeat: 1
+    type: Action
+    elementId: ZyqkAFltS0CIiZ3XTG4G2w
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  - id: m11qYAlf2U6HKKZYZGuBzg
+    enabled: true
+    invertResult: false
+    order: 6
+    repeat: 1
+    type: Action
+    elementId: i0OXiUOjIUW_R6dbp42mDg
+    settings:
+      sleepTime: -1
+      timeout: -1
+      sleepTiming: Inherit
+      failureBehaviorType: Inherit
+      takeScreenshotConditionType: Inherit
+    action:
+      id: 02d572b2-d610-4700-9ad3-40076ddb9807
+      source: System
+    parameterMaps: []
+    conditions: []
+    validations: []
+    contexts: []
+  parameters:
+  - name: ApplicationURL
+    description: Auto generated application URL parameter
+    value: http://localhost:19006/
+    type: Input
+auxTests: []
+elements:
+- id: LSErJY2ZaECub0fe2VP0XA
+  name: Thi sát hạch
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[2]/div[. = 'Thi sát hạch']
+    priority: 0
+  - name: XPATH
+    value: //div[2]/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div/div[2]/div[2]/div/div/div/div[1]/div/div/div/div[1]/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[2]/div
+    priority: 2
+- id: IiGv1AZ0qEOAsqLh_2Jf5w
+  name: Phần mặt đường và lề đường.
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[. = 'Phần mặt đường và lề đường.']
+    priority: 0
+  - name: XPATH
+    value: //div[3]/div/div[1]/div/div/div[2]
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div[3]/div/div[1]/div/div[1]/div[2]
+    priority: 2
+- id: ioC85Spog0Ccpvj-fb-owQ
+  name: Đề số 1
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[2]/div/div/div[1]/div[1]/div/div[1]/div/div[. = 'Đề số 1']
+    priority: 0
+  - name: XPATH
+    value: //div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[1]/div/div
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div/div[1]/div[1]/div/div[1]/div/div
+    priority: 2
+- id: ZyqkAFltS0CIiZ3XTG4G2w
+  name: Phần đường xe chạy.
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[. = 'Phần đường xe chạy.']
+    priority: 0
+  - name: XPATH
+    value: //div[3]/div/div[2]/div/div/div[2]
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div[3]/div/div[2]/div/div[1]/div[2]
+    priority: 2
+- id: i0OXiUOjIUW_R6dbp42mDg
+  name: Phần đường xe cơ giới.
+  type:
+    id: jUwODgyNjAyNzk2NTk1NjM
+    name: Div
+    source: System
+  locators:
+  - name: XPATH
+    value: //div[. = 'Phần đường xe cơ giới.']
+    priority: 0
+  - name: XPATH
+    value: //div[3]/div/div[3]/div/div/div[2]
+    priority: 1
+  - name: XPATH
+    value: /html/body/div[1]/div/div/div[2]/div/div/div[1]/div[3]/div[2]/div[2]/div/div/div/div[1]/div/div[2]/div/div[3]/div/div[3]/div/div[1]/div[2]
+    priority: 2
+projectParameters: []
+addons: []

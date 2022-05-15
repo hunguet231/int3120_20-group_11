@@ -41,3 +41,8 @@ $ npm start
 4. Chọn MobileProject
 5. Chọn Backend environments, kéo xuống chọn Edit backend.
 6. Copy đường link để pull back end về, sau đó paste vào terminal nơi chứa thư mục gốc project và thực hiện pull backend.
+
+
+# Test
+Test link: ./test/TestProject/Test
+Test result for testProject Test :./test/TestProject/Test result

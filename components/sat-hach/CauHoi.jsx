@@ -16,6 +16,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AppConstant } from "../../constants";
 import Clock from "../shared/Clock";
 import ChonCauHoiV2 from "./ChonCauHoiV2";
+import { getAnswerOrder } from "../../utils/getAnswerOrder";
 
 const win = Dimensions.get("window");
 
@@ -28,6 +29,8 @@ function CauHoi({ route, navigation }) {
   const [questions, setQuestions] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [showResult, setShowResult] = useState(false);
+  const [showExplain, setShowExplain] = useState(false);
+  const [activeClock, setActiveClock] = useState(true);
   const [value, setValue] = useState("");
   const [selectedQuestions, setSelectedQuestions] = useState({});
   const [selectedQuestionsDetails, setSelectedQuestionsDetails] = useState({});
@@ -51,6 +54,10 @@ function CauHoi({ route, navigation }) {
     //   },
     // ]);
     // navigation.navigate("Kết quả", { correct: 25, total: questions.length });
+    setShowResult(true);
+    setShowExplain(true);
+    setActiveClock(false);
+    console.log("show result");
   };
 
   const getSelectedQuestionsFromStorage = async () => {
@@ -155,12 +162,12 @@ function CauHoi({ route, navigation }) {
   };
 
   const styleAnswerText = (answer) => {
-    if (showResult) {
-      if (selectedQuestions[index] === `answer${answer.id}`) {
-        return styles.answerCorrect;
-      } else {
-        return styles.answerInCorrect;
-      }
+    if (
+      showResult &&
+      `answer${answer.id}` === (selectedQuestions[index] || value)
+    ) {
+      if (answer.is_true) return styles.answerCorrect;
+      return styles.answerInCorrect;
     }
     return styles.answerText;
   };
@@ -177,7 +184,7 @@ function CauHoi({ route, navigation }) {
   return (
     <View style={styles.body}>
       <View style={styles.header}>
-        <Clock />
+        <Clock isRun={activeClock} />
         <Text style={styles.headerText}>
           Câu số {index + 1}/{questions.length}
         </Text>
@@ -238,6 +245,24 @@ function CauHoi({ route, navigation }) {
             ))}
           </RadioButton.Group>
         </View>
+
+        {showExplain && (
+          <View style={styles.explain}>
+            <Text style={styles.correct}>
+              Đáp án đúng: {getAnswerOrder(questions[index].answers?.items)}
+            </Text>
+            <View style={styles.explainHeading}>
+              <Image
+                source={require("../../assets/message.png")}
+                style={styles.explainIcon}
+              />
+              <Text style={styles.explainHeadingText}>GIẢI THÍCH</Text>
+            </View>
+            <Text style={styles.explainContent}>
+              {questions[index]?.explain || ""}
+            </Text>
+          </View>
+        )}
       </ScrollView>
 
       <View style={styles.footer}>
@@ -362,6 +387,38 @@ const styles = {
     color: "red",
     marginLeft: 8,
     flex: 1,
+  },
+  explain: {
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 15,
+    paddingBottom: 15,
+  },
+  explainHeading: {
+    diplay: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 6,
+  },
+  explainIcon: {
+    width: 20,
+    height: 20,
+  },
+  explainHeadingText: {
+    marginLeft: 6,
+    fontWeight: "500",
+  },
+  explainContent: {
+    paddingLeft: 5,
+    paddingRight: 5,
+    paddingTop: 5,
+    paddingBottom: 5,
+    borderRadius: 5,
+    backgroundColor: "#A5D6A7",
+  },
+  correct: {
+    marginBottom: 8,
+    fontWeight: "500",
   },
   radio: {
     flex: 1,

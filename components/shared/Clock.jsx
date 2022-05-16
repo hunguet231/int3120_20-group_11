@@ -2,7 +2,7 @@ import React from "react";
 import Countdown from "react-countdown";
 import { Image, Text, View } from "react-native";
 
-const Clock = ({ duration = 20 }) => {
+const Clock = ({ isRun, duration = 20 }) => {
   const renderer = ({ _, minutes, seconds, completed }) => {
     if (completed) {
       return <Text>Hết giờ</Text>;
@@ -22,6 +22,7 @@ const Clock = ({ duration = 20 }) => {
       <Text style={styles.clockTime}>
         <Countdown
           date={Date.now() + duration * 60 * 1000}
+          autoStart={isRun}
           renderer={renderer}
         />
       </Text>

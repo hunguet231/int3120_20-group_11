@@ -1,5 +1,5 @@
 import { API } from "aws-amplify";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Image,
   Text,
@@ -22,6 +22,7 @@ const win = Dimensions.get("window");
 
 function CauHoi({ route, navigation }) {
   const { id, type } = route.params;
+  const clockRef = useRef();
 
   // route.name = `Đề số ${id}`;
 
@@ -56,7 +57,7 @@ function CauHoi({ route, navigation }) {
     // navigation.navigate("Kết quả", { correct: 25, total: questions.length });
     setShowResult(true);
     setShowExplain(true);
-    setActiveClock(false);
+    clockRef.current.pause();
     console.log("show result");
   };
 
@@ -184,7 +185,7 @@ function CauHoi({ route, navigation }) {
   return (
     <View style={styles.body}>
       <View style={styles.header}>
-        <Clock isRun={activeClock} />
+        <Clock innerRef={clockRef} />
         <Text style={styles.headerText}>
           Câu số {index + 1}/{questions.length}
         </Text>

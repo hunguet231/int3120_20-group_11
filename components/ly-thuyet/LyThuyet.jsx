@@ -69,7 +69,7 @@ function LyThuyet({ navigation }) {
             <View>
               <View style={styles.optionBox}>
                 <Image
-                  source={require("../../assets/lt-1.png")}
+                  source={require("../../assets/ly-thuyet/lt-1.png")}
                   style={styles.image}
                 />
                 <View style={styles.text}>

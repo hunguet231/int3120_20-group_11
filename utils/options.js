@@ -9,7 +9,7 @@ export const options = [
   },
   {
     image: require("../assets/options/3.png"),
-    text: "Biển báo đường bộ",
+    text: "Biển báo",
   },
   {
     image: require("../assets/options/4.png"),

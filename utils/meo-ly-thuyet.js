@@ -54,7 +54,7 @@ export const MeoLyThuyet = [
       },
       {
         content:
-          "Độ tuổi lấy bắng theo hạng (mỗi hạng cách nhau 3 tuổi): 16: Xe dưới 50cm3; 18: Hạng A, B; 21: Hạng C; 24: Hạng D, FC.; 27: Hạng E.",
+          "Độ tuổi lấy bằng theo hạng (mỗi hạng cách nhau 3 tuổi): 16: Xe dưới 50cm3; 18: Hạng A, B; 21: Hạng C; 24: Hạng D, FC.; 27: Hạng E.",
       },
       {
         content:

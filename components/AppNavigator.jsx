@@ -10,6 +10,7 @@ import BienBao from "./bien-bao/BienBao";
 import Meo from "./meo/Meo";
 import CauSai from "./cac-cau-sai/CauSai";
 import Result from "./Result";
+import { Text } from "react-native";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -25,7 +26,7 @@ function AppNavigator() {
       />
       <Screen name="Thi sát hạch" component={SatHach} options={options} />
       <Screen name="Học lý thuyết" component={LyThuyet} options={options} />
-      <Screen name="Biển báo đường bộ" component={BienBao} options={options} />
+      <Screen name="Biển báo" component={BienBao} options={options} />
       <Screen name="Các câu sai" component={CauSai} options={options} />
       <Screen name="Mẹo" component={Meo} options={options} />
       <Screen name="Câu hỏi" component={CauHoi} options={options} />
@@ -45,7 +46,8 @@ const options = {
   },
   headerTitleStyle: {
     color: "#fff",
-    fontSize: 15,
+    fontSize: 16,
+    fontWeight: "500",
   },
   headerTintColor: "#fff",
   headerTitleAlign: "center",

@@ -6,6 +6,18 @@ export const labelsType1 = [
       "Để báo đường cấm tất cả các loại máy kéo, kể cả máy kéo bánh hơi và bánh xích đi qua.",
     image: require("../assets/bien-bao/1.png"),
   },
+  {
+    title: "Cấm máy kéo",
+    content:
+      "Để báo đường cấm tất cả các loại máy kéo, kể cả máy kéo bánh hơi và bánh xích đi qua.",
+    image: require("../assets/bien-bao/1.png"),
+  },
+  {
+    title: "Cấm máy kéo",
+    content:
+      "Để báo đường cấm tất cả các loại máy kéo, kể cả máy kéo bánh hơi và bánh xích đi qua.",
+    image: require("../assets/bien-bao/1.png"),
+  },
   // ...todo
 ];
 

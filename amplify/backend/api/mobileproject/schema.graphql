@@ -33,3 +33,28 @@ type Answer @model{
     is_true: Boolean!
 }
 
+type TheorySet @model{
+    id: ID!
+    name: String!
+    total: Int!
+    questions: [TheoryQuestion]  @hasMany(indexName: "byTheorySet", fields: ["id"]) 
+    description: String!
+}
+
+type TheoryQuestion @model{
+    id: ID!
+    set_id: ID! @index(name: "byTheorySet", sortKeyFields: ["id"])
+    content: String!
+    image: String!
+    # set: Set!  @hasOne(fields: ["set_id"])
+    answers: [TheoryAnswer] @hasMany(indexName: "byTheoryQuestion", fields: ["id"])
+    explain: String!
+
+}
+
+type TheoryAnswer @model{
+    id: ID!
+    question_id: ID! @index(name: "byTheoryQuestion", sortKeyFields: ["id"])
+    content: String!
+    is_true: Boolean!
+}

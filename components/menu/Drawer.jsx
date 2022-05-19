@@ -21,6 +21,7 @@ const Drawer = ({ navigation }) => {
         headerTitleStyle: {
           color: "#fff",
           fontSize: 15,
+          fontWeight: "600",
         },
         headerTintColor: "#fff",
         headerTitleAlign: "center",

@@ -35,9 +35,10 @@ const renderTabBar = (props) => (
     renderLabel={({ route }) => (
       <Text
         style={{
-          textTransform: "normal",
+          textTransform: "none",
           color: "#fff",
-          whiteSpace: "nowrap",
+          fontSize: 15,
+          fontWeight: "500",
         }}
       >
         {route.title}
@@ -54,7 +55,7 @@ const BienBao = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: "first", title: "Biển báo cấm" },
-    { key: "second", title: "Biển báo hiệu lệnh" },
+    { key: "second", title: "Biển hiệu lệnh" },
     { key: "third", title: "Vạch kẻ đường" },
   ]);
 

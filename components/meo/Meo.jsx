@@ -26,7 +26,14 @@ const renderTabBar = (props) => (
   <TabBar
     {...props}
     renderLabel={({ route }) => (
-      <Text style={{ textTransform: "normal", color: "#fff" }}>
+      <Text
+        style={{
+          textTransform: "none",
+          color: "#fff",
+          fontSize: 15,
+          fontWeight: "500",
+        }}
+      >
         {route.title}
       </Text>
     )}

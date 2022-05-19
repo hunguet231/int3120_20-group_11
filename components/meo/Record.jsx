@@ -17,12 +17,13 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   title: {
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#e2e2e2",
     paddingLeft: 15,
-    paddingTop: 5,
-    paddingBottom: 5,
+    paddingTop: 6,
+    paddingBottom: 6,
     width: "100%",
     fontWeight: "600",
+    fontSize: 15,
   },
 });
 

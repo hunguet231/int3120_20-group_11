@@ -12,7 +12,9 @@ const OptionBox = ({ imageUrl, textButton, navigation }) => {
     >
       <Image source={imageUrl} style={styles.image} />
       <TouchableRipple style={styles.button} rippleColor="rgba(0, 0, 0, .32)">
-        <Text style={styles.text}>{textButton}</Text>
+        <Text numberOfLines={1} style={styles.text}>
+          {textButton}
+        </Text>
       </TouchableRipple>
     </TouchableOpacity>
   );

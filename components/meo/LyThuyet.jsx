@@ -24,6 +24,7 @@ const LyThuyet = () => {
 
 const styles = StyleSheet.create({
   item: {
+    fontSize: 15,
     paddingLeft: 15,
     paddingRight: 15,
     paddingTop: 5,

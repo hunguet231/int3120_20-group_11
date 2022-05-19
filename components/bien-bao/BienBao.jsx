@@ -55,7 +55,7 @@ const BienBao = () => {
   const [routes] = React.useState([
     { key: "first", title: "Biển báo cấm" },
     { key: "second", title: "Biển báo hiệu lệnh" },
-    { key: "third", title: "Vạch kẻ đường" },
+    { key: "third", title: "Biển báo nguy hiểm" },
   ]);
 
   return (

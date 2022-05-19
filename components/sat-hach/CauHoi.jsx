@@ -23,6 +23,7 @@ const win = Dimensions.get("window");
 function CauHoi({ route, navigation }) {
   const { id, type } = route.params;
   const clockRef = useRef();
+  const scrollRef = useRef();
 
   // route.name = `Đề số ${id}`;
 
@@ -89,6 +90,10 @@ function CauHoi({ route, navigation }) {
   };
 
   useEffect(async () => {
+    scrollRef.current?.scrollTo({
+      y: 0,
+      animated: true,
+    });
     await fetchQuestions(id);
     await getSelectedQuestionsFromStorage();
   }, []);
@@ -202,8 +207,10 @@ function CauHoi({ route, navigation }) {
         </TouchableHighlight>
       </View>
 
-      <ScrollView>
-        <Text style={styles.question}>{questions[index]?.content}</Text>
+      <ScrollView ref={scrollRef}>
+        <View style={styles.questionWrapper}>
+          <Text style={styles.question}>{questions[index]?.content}</Text>
+        </View>
 
         {questions[index]?.image ? (
           <Image
@@ -212,7 +219,7 @@ function CauHoi({ route, navigation }) {
             resizeMode={"contain"}
           />
         ) : (
-          <Text></Text>
+          <Text style={{ height: 0 }}></Text>
         )}
 
         <View style={styles.answerView}>
@@ -273,8 +280,10 @@ function CauHoi({ route, navigation }) {
             navigation.navigate("Chọn câu hỏi", {
               current: index + 1,
               total: questions.length,
-              setIndex,
-              selectedQuestions,
+              setIndex: setIndex,
+              selectedQuestions: selectedQuestions,
+              questions: questions,
+              showResult: showResult,
             });
           }}
         >
@@ -299,6 +308,7 @@ const styles = {
     height: "100%",
     width: "100%",
     backgroundColor: "#fff",
+    paddingBottom: 60,
   },
   header: {
     height: 50,
@@ -330,12 +340,11 @@ const styles = {
   endBtnHighLight: {
     backgroundColor: "rgb(112, 146, 254)",
   },
+  questionWrapper: { borderBottomColor: "#E5E5E5", borderBottomWidth: 1 },
   question: {
     fontSize: 14,
     fontWeight: "600",
     lineHeight: 18,
-    borderBottomWidth: 1,
-    borderColor: "rgb(226, 226, 226)",
     padding: 15,
   },
   answer: {

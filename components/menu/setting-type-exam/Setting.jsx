@@ -80,10 +80,8 @@ const Setting = ({ navigation }) => {
           </View>
         </TouchableRipple>
       </RadioButton.Group>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.textBtn} onPress={handleSaveType}>
-          Xong
-        </Text>
+      <TouchableOpacity style={styles.button} onPress={handleSaveType}>
+        <Text style={styles.textBtn}>Xong</Text>
       </TouchableOpacity>
     </View>
   );

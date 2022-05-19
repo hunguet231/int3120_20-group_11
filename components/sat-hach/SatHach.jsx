@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
     lineHeight: 17,
     paddingLeft: 15,
     paddingRight: 15,
+    paddingBottom: 5,
   },
   main: {
     paddingLeft: 15,

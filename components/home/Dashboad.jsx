@@ -1,37 +1,35 @@
 import * as React from "react";
-import { ScrollView, StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View } from "react-native";
+import { FlatGrid } from "react-native-super-grid";
 import { options } from "../../utils/options";
 import OptionBox from "./OptionBox";
 
-const screenHeight = Dimensions.get("window").height;
-
 const Dashboad = ({ navigation }) => {
   return (
-    <ScrollView>
-      <View style={styles.main}>
-        {options.map((opt, index) => (
+    <View style={styles.main}>
+      <FlatGrid
+        style={styles.list}
+        itemDimension={130}
+        data={options}
+        renderItem={({ item }) => (
           <OptionBox
-            key={index}
-            imageUrl={opt.image}
-            textButton={opt.text}
+            imageUrl={item.image}
+            textButton={item.text}
             navigation={navigation}
           />
-        ))}
-      </View>
-    </ScrollView>
+        )}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   main: {
-    paddingBottom: 50,
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 20,
+    height: "100%",
+  },
+  list: {
     backgroundColor: "#fff",
-    height: screenHeight - 64,
-    flexDirection: "row",
-    flexWrap: "wrap",
+    paddingTop: 20,
   },
 });
 

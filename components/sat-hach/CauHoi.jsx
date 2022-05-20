@@ -15,25 +15,22 @@ import { RadioButton, TouchableRipple } from "react-native-paper";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AppConstant } from "../../constants";
 import Clock from "../shared/Clock";
-import ChonCauHoiV2 from "./ChonCauHoiV2";
 import { getAnswerOrder } from "../../utils/getAnswerOrder";
 
 const win = Dimensions.get("window");
 
 function CauHoi({ route, navigation }) {
-  const { id, type } = route.params;
+  const { id, type, isEnd } = route.params;
   const clockRef = useRef();
   const scrollRef = useRef();
-
-  // route.name = `Đề số ${id}`;
 
   const [index, setIndex] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [showResult, setShowResult] = useState(false);
-  const [showExplain, setShowExplain] = useState(false);
-  const [activeClock, setActiveClock] = useState(true);
+  const [showResult, setShowResult] = useState(isEnd);
+  const [showExplain, setShowExplain] = useState(isEnd);
   const [value, setValue] = useState("");
+  const [end, setEnd] = useState(isEnd);
   const [selectedQuestions, setSelectedQuestions] = useState({});
   const [selectedQuestionsDetails, setSelectedQuestionsDetails] = useState({});
 
@@ -45,21 +42,42 @@ function CauHoi({ route, navigation }) {
     setIndex(index + 1);
   };
 
-  const handleEnd = () => {
-    // Alert.alert("Kết thúc", "Xác nhận kết thúc bài thi?", [
-    //   {
-    //     text: "Xác nhận",
-    //     onPress: () => {
-    //       // todo
-    //     },
-    //     style: "cancel",
-    //   },
-    // ]);
-    // navigation.navigate("Kết quả", { correct: 25, total: questions.length });
+  const handleEnd = async () => {
     setShowResult(true);
     setShowExplain(true);
     clockRef.current.pause();
-    console.log("show result");
+
+    // mark exam with id as 'end'
+    const dataEnds = JSON.parse(await AsyncStorage.getItem("@end_exams")) || {};
+
+    dataEnds[type] = dataEnds[type] || {};
+    dataEnds[type][id] = true;
+
+    await AsyncStorage.setItem("@end_exams", JSON.stringify(dataEnds));
+  };
+
+  const handleTryAgain = async () => {
+    try {
+      const newData = JSON.parse(JSON.stringify(selectedQuestionsDetails));
+      newData[type][`set${id}`] = {};
+      setIndex(0);
+      setSelectedQuestions({});
+      await AsyncStorage.setItem(
+        "@selected_questions_details",
+        JSON.stringify(newData)
+      );
+
+      const dataEnds =
+        JSON.parse(await AsyncStorage.getItem("@end_exams")) || {};
+      dataEnds[type][id] = false;
+      await AsyncStorage.setItem("@end_exams", JSON.stringify(dataEnds));
+
+      setShowResult(false);
+      setShowExplain(false);
+      setEnd(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const getSelectedQuestionsFromStorage = async () => {
@@ -71,7 +89,7 @@ function CauHoi({ route, navigation }) {
       setSelectedQuestions(data[type]?.[`set${id}`] || {});
     } catch (e) {
       console.log(e);
-      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
     }
   };
 
@@ -85,7 +103,7 @@ function CauHoi({ route, navigation }) {
       );
     } catch (e) {
       console.log(e);
-      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
     }
   };
 
@@ -158,12 +176,12 @@ function CauHoi({ route, navigation }) {
 
       const res = data.getSet.questions.items;
       setQuestions(res);
-      console.log(res);
+      // console.log(res);
       setLoading(false);
     } catch (err) {
       console.log(err);
       setLoading(false);
-      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
     }
   };
 
@@ -191,25 +209,33 @@ function CauHoi({ route, navigation }) {
     <View style={styles.body}>
       <View style={styles.header}>
         <Clock innerRef={clockRef} />
-        <Text style={styles.headerText}>
-          Câu số {index + 1}/{questions.length}
-        </Text>
+        <Text style={styles.headerText}>Đề số {id}</Text>
         <TouchableHighlight style={styles.endBtn}>
-          {index === questions.length - 1 ? (
-            <Text style={styles.endBtnText} onPress={handleEnd}>
-              Kết thúc
+          {end ? (
+            <Text style={{ color: "#fff" }} onPress={handleTryAgain}>
+              Làm lại
             </Text>
           ) : (
-            <Text style={styles.endBtnText} onPress={handleNextQuestion}>
-              Câu sau
-            </Text>
+            <>
+              {index === questions.length - 1 ? (
+                <Text style={styles.endBtnText} onPress={handleEnd}>
+                  Kết thúc
+                </Text>
+              ) : (
+                <Text style={styles.endBtnText} onPress={handleNextQuestion}>
+                  Câu sau
+                </Text>
+              )}
+            </>
           )}
         </TouchableHighlight>
       </View>
 
       <ScrollView ref={scrollRef}>
         <View style={styles.questionWrapper}>
-          <Text style={styles.question}>{questions[index]?.content}</Text>
+          <Text style={styles.question}>
+            Câu {index + 1}: {questions[index]?.content}
+          </Text>
         </View>
 
         {questions[index]?.image ? (
@@ -298,7 +324,6 @@ function CauHoi({ route, navigation }) {
           </View>
         </TouchableOpacity>
       </View>
-      {/* <ChonCauHoiV2 /> */}
     </View>
   );
 }

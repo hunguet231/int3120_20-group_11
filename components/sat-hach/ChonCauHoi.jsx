@@ -1,11 +1,17 @@
 import * as React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { FlatGrid } from "react-native-super-grid";
 import { AppConstant } from "../../constants";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { FontAwesome } from "@expo/vector-icons";
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs([
+  "Non-serializable values were found in the navigation state",
+]);
 
 function ChonCauHoi({ route, navigation }) {
-  const { current, total, setIndex, selectedQuestions, questions, showResult } =
+  const { current, total, selectedQuestions, setIndex, questions, showResult } =
     route.params;
 
   const questionIndexs = [];
@@ -24,28 +30,7 @@ function ChonCauHoi({ route, navigation }) {
   for (let i = 0; i < total; i++) {
     defaultColor = "#E4E4E4";
     if (selectedQuestions.hasOwnProperty(i)) defaultColor = "#7092FE";
-    questionIndexs.push(
-      <TouchableOpacity
-        activeOpacity={0.8}
-        onPress={() => {
-          setIndex(i);
-          navigation.goBack();
-        }}
-        key={i}
-        style={[styles.questionBox, { backgroundColor: defaultColor }]}
-      >
-        <Text style={styles.index}>{i + 1}</Text>
-        {showResult && (
-          <View style={styles.tag}>
-            {isCorrect(i) ? (
-              <Ionicons name="md-checkmark-circle" size={23} color="#55efc4" />
-            ) : (
-              <FontAwesome name="times-circle" size={22} color="red" />
-            )}
-          </View>
-        )}
-      </TouchableOpacity>
-    );
+    questionIndexs.push({ index: i, color: defaultColor });
   }
 
   return (
@@ -67,7 +52,44 @@ function ChonCauHoi({ route, navigation }) {
             />
           </View>
         </TouchableOpacity>
-        <View style={styles.body}>{questionIndexs}</View>
+      </View>
+      <View style={styles.body}>
+        <FlatGrid
+          style={styles.list}
+          itemDimension={60}
+          data={questionIndexs}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => {
+                setIndex(item.index);
+                navigation.goBack();
+              }}
+              style={[styles.questionBox, { backgroundColor: item.color }]}
+            >
+              <Text style={styles.index}>{item.index + 1}</Text>
+              {showResult && (
+                <View style={styles.tag}>
+                  {isCorrect(item.index) ? (
+                    <Ionicons
+                      name="md-checkmark-circle"
+                      size={22}
+                      color="#55efc4"
+                      style={{ marginLeft: 1 }}
+                    />
+                  ) : (
+                    <FontAwesome
+                      name="times-circle"
+                      size={22}
+                      color="red"
+                      style={{ marginLeft: 1 }}
+                    />
+                  )}
+                </View>
+              )}
+            </TouchableOpacity>
+          )}
+        />
       </View>
     </View>
   );
@@ -108,12 +130,10 @@ const styles = StyleSheet.create({
   },
   body: {
     width: "100%",
+    paddingLeft: 5,
+    paddingRight: 5,
     display: "flex",
     flexWrap: "wrap",
-    flexGrow: 4,
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 20,
     flexDirection: "row",
   },
   questionBox: {
@@ -125,7 +145,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 5,
     marginBottom: 5,
-    marginLeft: 5,
   },
   tag: {
     position: "absolute",
@@ -138,6 +157,9 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  list: {
+    minHeight: "100%",
   },
 });
 

@@ -15,8 +15,8 @@ export const options = [
     image: require("../assets/options/4.png"),
     text: "Mẹo",
   },
-  {
-    image: require("../assets/options/5.png"),
-    text: "Các câu sai",
-  },
+  // {
+  //   image: require("../assets/options/5.png"),
+  //   text: "Các câu sai",
+  // },
 ];

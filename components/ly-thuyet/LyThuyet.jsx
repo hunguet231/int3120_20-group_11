@@ -40,7 +40,7 @@ function LyThuyet({ navigation }) {
     } catch (err) {
       console.log(err);
       setLoading(false);
-      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
     }
   };
 

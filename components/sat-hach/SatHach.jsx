@@ -21,6 +21,40 @@ function SatHach({ navigation }) {
   const [sets, setSets] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [type, setType] = useState("");
+  const [selectedQuestions, setSelectedQuestions] = useState([]);
+  const [endExams, setEndExams] = useState({});
+
+  const getEndExamsFromStorage = async (type, sets) => {
+    try {
+      const dataEnds =
+        JSON.parse(await AsyncStorage.getItem("@end_exams")) || {};
+      sets.map((set) => {
+        dataEnds[set.id] = dataEnds[set.id] || "";
+      });
+      if (dataEnds) {
+        setEndExams(dataEnds[type]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getSelectedQuestionsFromStorage = async (sets_length, type) => {
+    try {
+      const data =
+        JSON.parse(await AsyncStorage.getItem("@selected_questions_details")) ||
+        {};
+
+      let choosen = [];
+      for (let i = 1; i <= sets_length; ++i) {
+        choosen.push(Object.keys(data[type]?.[`set${i}`] || {}).length);
+      }
+      setSelectedQuestions(choosen);
+    } catch (e) {
+      console.log(e);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
+    }
+  };
 
   const getTypeExamFromStorage = async () => {
     try {
@@ -30,7 +64,7 @@ function SatHach({ navigation }) {
       } else return "A1";
     } catch (e) {
       console.log(e);
-      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
     }
   };
 
@@ -54,11 +88,13 @@ function SatHach({ navigation }) {
 
       const filteredSets = res.filter((set) => set.type === type);
       setSets(filteredSets);
+      await getSelectedQuestionsFromStorage(filteredSets.length, type);
+      await getEndExamsFromStorage(type, filteredSets);
       setLoading(false);
     } catch (err) {
       console.log(err);
       setLoading(false);
-      Alert.alert(<Text>Oops!</Text>, <Text>Có lỗi xảy ra!</Text>);
+      Alert.alert("Oops!", "Có lỗi xảy ra!");
     }
   };
 
@@ -80,43 +116,53 @@ function SatHach({ navigation }) {
         {sets.length ? (
           <View>
             <View style={styles.main}>
-              {sets.map((set) => (
-                <TouchableHighlight
-                  activeOpacity={0.6}
-                  underlayColor="#DDDDDD"
-                  key={set.id}
-                  style={styles.button}
-                  onPress={() => {
-                    navigation.navigate("Câu hỏi", { id: set.id, type });
-                  }}
-                >
-                  <View>
-                    <View style={styles.container1}>
-                      <View style={styles.containerBox1}>
-                        <Text style={styles.containerBox1Content}>
-                          Đề số {set.id}
-                        </Text>
+              {selectedQuestions.length ? (
+                sets.map((set, index) => (
+                  <TouchableHighlight
+                    activeOpacity={0.6}
+                    underlayColor="#DDDDDD"
+                    key={set.id}
+                    style={styles.button}
+                    onPress={() => {
+                      navigation.navigate("Câu hỏi", {
+                        id: set.id,
+                        type,
+                        isEnd: endExams[set.id],
+                      });
+                    }}
+                  >
+                    <View>
+                      <View style={styles.container1}>
+                        <View style={styles.containerBox1}>
+                          <Text style={styles.containerBox1Content}>
+                            Đề số {set.id}
+                          </Text>
+                        </View>
+                      </View>
+                      <Text style={styles.process}>
+                        {endExams[set.id]
+                          ? "Đã làm"
+                          : `${selectedQuestions[index]}/${set.total}`}
+                      </Text>
+                      <View style={styles.processBar}>
+                        <View style={styles.goal} />
+                        <View
+                          style={[
+                            styles.current,
+                            {
+                              width:
+                                (selectedQuestions[index] * styles.goal.width) /
+                                set.total,
+                            },
+                          ]}
+                        />
                       </View>
                     </View>
-                    <Text style={styles.process}>
-                      {set.chosen_number}/{set.total}
-                    </Text>
-                    <View style={styles.processBar}>
-                      <View style={styles.goal} />
-                      <View
-                        style={[
-                          styles.current,
-                          {
-                            width:
-                              (set.chosen_number * styles.goal.width) /
-                              set.total,
-                          },
-                        ]}
-                      />
-                    </View>
-                  </View>
-                </TouchableHighlight>
-              ))}
+                  </TouchableHighlight>
+                ))
+              ) : (
+                <Text></Text>
+              )}
             </View>
             <View style={styles.footer}>
               <TouchableOpacity style={styles.footerBtn}>
@@ -127,6 +173,10 @@ function SatHach({ navigation }) {
                       navigation.navigate("Câu hỏi", {
                         id: sets[Math.floor(Math.random() * sets.length)].id,
                         type,
+                        isEnd:
+                          endExams[
+                            sets[Math.floor(Math.random() * sets.length)].id
+                          ],
                       });
                     }}
                   >
@@ -214,8 +264,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     transform: [{ translateX: 74.7755 }, { translateY: 12 }],
     color: "rgb(0, 0, 0)",
-    fontSize: 16,
-    fontWeight: "700",
+    fontSize: 14,
+    fontWeight: "500",
     lineHeight: 24,
     letterSpacing: 0,
     textAlign: "center",

@@ -1,8 +1,28 @@
-import React from "react";
-import { Text, StyleSheet, View, ScrollView, Image } from "react-native";
+import React, { useState } from "react";
+import {
+  Modal,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableHighlight,
+} from "react-native";
+import ImageViewer from "react-native-image-zoom-viewer";
 import Record from "./Record";
 
+const images = [
+  {
+    url: "",
+    props: {
+      source: require("../../assets/meo-th.png"),
+    },
+  },
+];
+
 const ThucHanh = () => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <ScrollView>
       <Record title={"Lưu ý khi thi thực hành lái xe máy"}>
@@ -70,10 +90,21 @@ const ThucHanh = () => {
                 + Đưa xe vào vạch xuất phát, thoải mái tâm lý để có 1 phần thi
                 đạt điểm số cao.
               </Text>
-              <Image
-                style={styles.image}
-                //image={require("../bien-bao/meoThucHanh.png")}
-              />
+              <Modal visible={visible} transparent={true}>
+                <ImageViewer
+                  imageUrls={images}
+                  saveToLocalByLongPress
+                  enableSwipeDown
+                  onCance={() => setVisible(false)}
+                  onSwipeDown={() => setVisible(false)}
+                />
+              </Modal>
+              <TouchableHighlight onPress={() => setVisible(!visible)}>
+                <Image
+                  source={require("../../assets/meo-th.png")}
+                  style={styles.image}
+                />
+              </TouchableHighlight>
               <Text style={styles.title}>4. Cách đi vòng số 8</Text>
               <Text style={styles.para}>
                 Khi xuất phát, tiến dần vào cửa vòng số 8, ở giai đoạn này bạn
@@ -150,7 +181,6 @@ const ThucHanh = () => {
 const styles = StyleSheet.create({
   item: {
     paddingLeft: 15,
-    paddingRight: 15,
     paddingTop: 5,
     paddingBottom: 5,
   },
@@ -158,19 +188,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingTop: 5,
     paddingBottom: 5,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   title: {
     fontWeight: "600",
-    paddingLeft: 15,
     marginBottom: 3,
     marginTop: 5,
   },
   para: {
     fontSize: 15,
-    paddingLeft: 15,
-    paddingRight: 15,
+    textAlign: "justify",
   },
-  image: {},
+  image: {
+    flex: 1,
+    width: "100%",
+    height: 150,
+  },
 });
 
 export default ThucHanh;

@@ -11,6 +11,7 @@ import Meo from "./meo/Meo";
 import CauSai from "./cac-cau-sai/CauSai";
 import Result from "./Result";
 import { Text } from "react-native";
+import CauHoiLT from "./ly-thuyet/CauHoi";
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -30,6 +31,7 @@ function AppNavigator() {
       <Screen name="Các câu sai" component={CauSai} options={options} />
       <Screen name="Mẹo" component={Meo} options={options} />
       <Screen name="Câu hỏi" component={CauHoi} options={options} />
+      <Screen name="Ôn lý thuyết" component={CauHoiLT} options={options} />
       <Screen
         name="Chọn câu hỏi"
         component={ChonCauHoi}

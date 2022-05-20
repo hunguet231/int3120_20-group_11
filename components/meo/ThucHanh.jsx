@@ -5,7 +5,7 @@ import Record from "./Record";
 const ThucHanh = () => {
   return (
     <ScrollView>
-      <Record title={"Lưu ý khi thi thực hành lái xe máy hạng A1"}>
+      <Record title={"Lưu ý khi thi thực hành lái xe máy"}>
         <View style={styles.content}>
           <View>
             <Text style={styles.title}>
@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     paddingLeft: 15,
     marginBottom: 3,
+    marginTop: 5,
   },
   para: {
     fontSize: 15,

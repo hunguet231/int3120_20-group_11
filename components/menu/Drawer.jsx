@@ -58,7 +58,7 @@ const Drawer = ({ navigation }) => {
           ),
         }}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Thông tin phản hồi"
         component={Feedback}
         options={{
@@ -71,8 +71,8 @@ const Drawer = ({ navigation }) => {
             />
           ),
         }}
-      />
-      <Drawer.Screen
+      /> */}
+      {/* <Drawer.Screen
         name="Chia sẻ ứng dụng"
         component={Share}
         options={{
@@ -85,7 +85,7 @@ const Drawer = ({ navigation }) => {
             />
           ),
         }}
-      />
+      /> */}
       <Drawer.Screen
         name="Đánh giá ứng dụng"
         component={Rate}

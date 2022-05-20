@@ -4,7 +4,7 @@ export const labelsType1 = [
     title: "Cấm máy kéo",
     content:
       "Để báo đường cấm tất cả các loại máy kéo, kể cả máy kéo bánh hơi và bánh xích đi qua.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam1.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/cam1.png"),
   },
   {
     title: "Cự ly tối thiểu giữa hai xe",

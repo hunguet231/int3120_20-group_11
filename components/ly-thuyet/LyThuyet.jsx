@@ -161,7 +161,7 @@ function LyThuyet({ navigation }) {
                           />
                         </View>
                         <Text style={styles.process}>
-                          {selectedQuestions[index]}/{set.total}
+                          {`${selectedQuestions[index]}/${set.total}`}
                         </Text>
                       </View>
                     </View>

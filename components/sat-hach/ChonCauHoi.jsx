@@ -68,7 +68,7 @@ function ChonCauHoi({ route, navigation }) {
               style={[styles.questionBox, { backgroundColor: item.color }]}
             >
               <Text style={styles.index}>{item.index + 1}</Text>
-              {showResult && (
+              {showResult ? (
                 <View style={styles.tag}>
                   {isCorrect(item.index) ? (
                     <Ionicons
@@ -86,6 +86,8 @@ function ChonCauHoi({ route, navigation }) {
                     />
                   )}
                 </View>
+              ) : (
+                <Text style={{ height: 0 }}></Text>
               )}
             </TouchableOpacity>
           )}

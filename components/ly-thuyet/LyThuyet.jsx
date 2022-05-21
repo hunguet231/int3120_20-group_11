@@ -34,8 +34,10 @@ function LyThuyet({ navigation }) {
     try {
       const dataEnds =
         JSON.parse(await AsyncStorage.getItem("@end_exams")) || {};
+      dataEnds[type] = dataEnds[type] || {};
+
       sets.map((set) => {
-        dataEnds[set.id] = dataEnds[set.id] || "";
+        dataEnds[type][set.id] = dataEnds[type][set.id] || "";
       });
       if (dataEnds) {
         setEndExams(dataEnds[type]);

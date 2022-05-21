@@ -1,16 +1,22 @@
 import { AntDesign, Ionicons } from "@expo/vector-icons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import * as React from "react";
+import { Text, Linking } from "react-native";
 import { AppConstant } from "../../constants";
 import Dashboad from "../home/Dashboad";
-import Feedback from "./Feedback";
 import Menu from "./Menu";
 import Rate from "./Rate";
 import Setting from "./setting-type-exam/Setting";
-import Share from "./Share";
 
 const Drawer = ({ navigation }) => {
   const Drawer = createDrawerNavigator();
+
+  const onRating = (e) => {
+    e.preventDefault();
+    Linking.openURL(
+      "https://play.google.com/store/apps/details?id=com.vietcoder.gplxmaynew"
+    );
+  };
 
   return (
     <Drawer.Navigator
@@ -97,6 +103,17 @@ const Drawer = ({ navigation }) => {
               size={size}
               color={focused ? "#7092FE" : "#000"}
             />
+          ),
+          drawerLabel: ({ focused }) => (
+            <Text
+              style={{
+                fontWeight: "500",
+                color: focused ? "#7092FE" : "rgba(28, 28, 30, 0.68)",
+              }}
+              onPress={onRating}
+            >
+              Đánh giá ứng dụng
+            </Text>
           ),
         }}
       />

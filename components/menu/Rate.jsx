@@ -1,25 +1,28 @@
 import * as React from "react";
-import { View, Text,TouchableOpacity, Button,StyleSheet, Linking } from "react-native";
+import {
+  Linking,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { AppConstant } from "../../constants";
 
 const Rate = () => {
   const onPress = () => {
     Linking.openURL("market://details?id=com.vietcoder.gplxmaynew");
-  }
+  };
   return (
     <View style={styles.rate}>
       <View style={styles.footerBtn}>
-      <TouchableOpacity style={styles.footerBtn}>
-                <View>
-                  <Text
-                    style={styles.footerBtnText}
-                    onPress={onPress}>
-                    Đánh giá ứng dụng
-                  </Text>
-                </View>
-              </TouchableOpacity>
+        <TouchableOpacity style={styles.footerBtn}>
+          <View>
+            <Text style={styles.footerBtnText} onPress={onPress}>
+              Đi tới CHPlay
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
-      
     </View>
   );
 };
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
     marginRight: "auto",
   },
   footerBtnText: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "normal",
     color: "#FFFFFF",
   },

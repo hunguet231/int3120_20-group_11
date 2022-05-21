@@ -138,6 +138,7 @@ function CauHoiLT({ route, navigation }) {
                         id
                         set_id
                         content
+                        image
                         answers {
                           items {
                             id
@@ -261,7 +262,7 @@ function CauHoiLT({ route, navigation }) {
           </RadioButton.Group>
         </View>
 
-        {showExplain ? (
+        {/* {showExplain ? (
           <View style={styles.explain}>
             <Text style={styles.correct}>
               Đáp án đúng: {getAnswerOrder(questions[index].answers?.items)}
@@ -279,7 +280,7 @@ function CauHoiLT({ route, navigation }) {
           </View>
         ) : (
           <Text style={{ height: 0 }}></Text>
-        )}
+        )} */}
       </ScrollView>
 
       <View style={styles.footer}>

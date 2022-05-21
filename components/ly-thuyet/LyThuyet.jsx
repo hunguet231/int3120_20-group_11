@@ -96,6 +96,7 @@ function LyThuyet({ navigation }) {
         authMode: "API_KEY",
       });
       const res = data.listTheorySets.items;
+      res.sort((a, b) => a.id - b.id);
 
       setSets(res);
       await getSelectedQuestionsFromStorage(res.length, type);

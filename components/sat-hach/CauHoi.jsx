@@ -280,7 +280,7 @@ function CauHoi({ route, navigation }) {
           </RadioButton.Group>
         </View>
 
-        {showExplain && (
+        {showExplain ? (
           <View style={styles.explain}>
             <Text style={styles.correct}>
               Đáp án đúng: {getAnswerOrder(questions[index].answers?.items)}
@@ -296,6 +296,8 @@ function CauHoi({ route, navigation }) {
               {questions[index]?.explain || ""}
             </Text>
           </View>
+        ) : (
+          <Text style={{ height: 0 }}></Text>
         )}
       </ScrollView>
 

@@ -4,61 +4,61 @@ export const labelsType1 = [
     title: "Cấm máy kéo",
     content:
       "Để báo đường cấm tất cả các loại máy kéo, kể cả máy kéo bánh hơi và bánh xích đi qua.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam1.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-1.png"),
   },
   {
     title: "Cự ly tối thiểu giữa hai xe",
     content:
       "Để báo xe ô tô phải đi cách nhau một khoảng tối thiểu. Số ghi trên biển cho biết khoảng cách tối thiếu tính bằng mét. Biển có hiệu lực cấm các xe ô tô không được đi cách nhau kể cả các xe ưu tiên theo luật lệ nhà nước quy định một cự ly nhỏ hơn trị số ghi trên biển báo.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam2.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-2.png"),
   },
   {
     title: "Cấm xe người kéo, đẩy",
     content:
       "Để báo đường cấm xe người kéo, đẩy đi qua. Biển không có giá trị cấm những xe nôi của trẻ em và phương tiện chuyên dụng để đi lại của người tàn tật.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam3.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-3.png"),
   },
   {
     title: "Cấm ô tô khách và ô tô tải",
     content:
       "Để báo đường cấm ô tô chở khách và các loại ô tô tải có trọng lượng lớn nhất cho phép trên 3,5 tấn kể cả các loại máy kéo xà xe máy thi công chuyên dụng đi qua trừ các xe được ưu tiên theo luật lệ nhà nước quy định.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam4.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-4.png"),
   },
   {
     title: "Hạn chế chiều dài ô tô",
     content:
       "Biển báo cấm các loại xe (cơ giới và thô sơ) kể cả xe ưu tiên theo quy định, có độ dài kể cả xe và hàng hoá lớn hơn trị số quy định trên biển.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam5.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-5.png"),
   },
   {
     title: "Cấm ô tô rẽ trái",
     content:
       "Biển báo cấm các loại xe cơ giới (kể cả xe 3 bánh) rẽ trái, trừ xe mô tô 2 bánh, xe gắn máy và xe được ưu tiên theo quy định.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam6.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-6.png"),
   },
   {
     title: "Đường cấm",
     content:
       "Biển báo cấm tất cả các loại phương tiện (xe cơ giới và xe thô sơ) di chuyển cả hai hướng, trừ các xe được ưu tiên theo quy định (xe chữa cháy, xe cứu thương, xe hộ đê, đoàn xe tang,...).",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam7.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-7.png"),
   },
   {
     title: "Cấm đi ngược chiều",
     content:
       "Biển báo cấm tất cả các loại xe (xe cơ giới và xe thô sơ) đi vào theo chiều đặt biển, trừ các xe được ưu tiên theo quy định; người đi bộ được phép đi trên vỉa hè hoặc lề đường.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam8.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-8.png"),
   },
   {
     title: "Cấm xe ô tô ",
     content:
       "Biển báo cấm tất cả các loại xe cơ giới (kể cả mô tô 3 bánh), trừ xe mô tô 2 bánh, xe gắn máy và các xe được ưu tiên theo quy định.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam9.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-9.png"),
   },
   {
     title: "Cấm ô tô rẽ phải",
     content:
       "Biển báo cấm các loại xe cơ giới (kể cả xe 3 bánh) rẽ phải, trừ xe mô tô 2 bánh, xe gắn máy và xe được ưu tiên theo quy định.",
-    image: require("../assets/bien-bao/bien-bao-cam/Cam10.png"),
+    image: require("../assets/bien-bao/bien-bao-cam/Cam-10.png"),
   },
 ];
 
